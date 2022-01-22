@@ -1,23 +1,26 @@
-import logo from './logo.svg';
-import './App.css';
+import Navbar from "./Component/Navbar";
+import "@fortawesome/fontawesome-free/css/all.min.css";
+import './assets/scss/style.css'
+import store from "./Redux/store";
+import { BrowserRouter, HashRouter, Route, Routes, } from "react-router-dom";
+import SinglePostPage from "./pages/Post/SinglePostPage";
+import Home from "./pages/Home";
+import Blog from "./pages/Post/Blog";
 
 function App() {
+
+  // console.log(data, "data");
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="App ">
+      <HashRouter>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/blog" element={<Blog />} />
+          <Route path="/post/:id" element={<SinglePostPage />} />
+          <Route path="/post" element={<SinglePostPage />} />
+          <Route path="*" element={<Home />} />
+        </Routes>
+      </HashRouter>
     </div>
   );
 }

@@ -1,0 +1,312 @@
+@import "variables";
+
+:root {
+  --background-color: $white;
+  --box-background-color: $white;
+  --box-background-color-shade: $white;
+  --footer: $default;
+  --color: $default;
+  --pcolor: #6f6f6f;
+  --shadow: #6f6f6f;
+}
+
+* {
+  margin: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+body {
+  color: var(--color);
+  background-color: var(--background-color);
+  letter-spacing: 0.5px;
+  font-size: calc(12px + 0.2vw);
+  line-height: calc(21px + 0.4vw);
+}
+h1 {
+  font-size: 1.7em;
+  line-height: calc(20px + 1vw);
+}
+h2 {
+  font-size: 1.5em;
+  line-height: calc(17px + 1vw);
+}
+h3 {
+  font-size: 1.3em;
+  line-height: calc(15px + 1vw);
+  font-weight: 500;
+}
+h4 {
+  font-size: 1.1em;
+  line-height: calc(13px + 1vw);
+  font-weight: 500;
+}
+h5 {
+  font-size: 0.8em;
+  line-height: calc(20px + 1vw);
+}
+h6 {
+  font-size: 0.6em;
+  line-height: calc(18px + 1vw);
+}
+p {
+  color: var(--pcolor);
+}
+a {
+  text-decoration: none;
+  color: $primary;
+  &:hover {
+    color: darken($primary, 20%);
+  }
+  &:focus {
+    color: darken($primary, 20%);
+  }
+}
+
+a.underline {
+  &:after {
+    content: "";
+    position: absolute;
+    width: calc(6em + 1vw);
+    height: 2px;
+    left: 0;
+    bottom: 15px;
+    background-color: $primary;
+    transform: scaleX(0);
+    transform-origin: bottom left;
+    transition: transform 0.3s;
+  }
+  &:hover {
+    &:after {
+      transform: scaleX(1);
+      transform-origin: bottom left;
+      transition: transform 0.3s;
+    }
+  }
+}
+button {
+  background-color: $primary;
+  color: $white;
+  border-radius: 5px;
+  border: unset;
+  padding: 0.7em 1.2em;
+  cursor: pointer;
+  &:hover {
+    transform: translateY(-0.1rem);
+    background-color: $primary-dark;
+    box-shadow: 0 0.2rem 0.5rem -0.2rem $gray-700 !important;
+    transition: all 0.2s ease-in-out;
+  }
+}
+button.outline {
+  color: $primary;
+  background-color: $white;
+  box-shadow: 0 0 0 0.1rem $primary;
+
+  &:hover {
+    background-color: $primary;
+    color: $white;
+    transform: translateY(-0.1rem);
+  }
+  &:focus {
+    box-shadow: 0 0 0 0.3rem $primary;
+  }
+}
+
+button.btn-sm {
+  font-size: 12px;
+  padding: 0.3em 0.6em;
+}
+
+.shadow-sm {
+  box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075) !important;
+}
+.shadow {
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15) !important;
+}
+
+// spinner
+.spinner {
+  animation: rotate 2s linear infinite;
+  z-index: 2;
+  // margin: -25px 0 0 -25px;
+  width: 50px;
+  height: 50px;
+
+  & .path {
+    stroke: $primary;
+    stroke-linecap: round;
+    animation: dash 1.5s ease-in-out infinite;
+  }
+}
+
+@keyframes rotate {
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes dash {
+  0% {
+    stroke-dasharray: 1, 150;
+    stroke-dashoffset: 0;
+  }
+  50% {
+    stroke-dasharray: 90, 150;
+    stroke-dashoffset: -35;
+  }
+  100% {
+    stroke-dasharray: 90, 150;
+    stroke-dashoffset: -124;
+  }
+}
+//end spinner
+
+// section-2
+.section-2 {
+  // media
+  ::-webkit-scrollbar {
+    width: 6px; /* Remove scrollbar space */
+    background: transparent; /* Optional: just make scrollbar invisible */
+  }
+  /* Optional: show position indicator in red */
+  ::-webkit-scrollbar-thumb {
+    border-radius: 1rem;
+    padding-right: 2rem;
+    background: var(--pcolor);
+  }
+
+  padding: 2rem 1rem;
+  display: grid;
+  grid-template-columns: 100%;
+  grid-row-gap: 1rem;
+  grid-column-gap: 1rem;
+  align-items: center;
+
+  .section-2-0 {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
+    grid-row-gap: 1rem;
+    grid-column-gap: 1rem;
+    border-radius: 0.5rem;
+  }
+
+  .section-2-1 {
+    border-radius: 0.5rem;
+    padding: 1rem 1rem 0rem 1rem;
+    background-color: var(--box-background-color-shade);
+  }
+  .section-2-2 {
+    border-radius: 0.5rem;
+    padding: 1rem 1rem 0rem 1rem;
+    background-color: var(--box-background-color-shade);
+  }
+
+  .section-2-3 {
+    width: 100%;
+    align-items: center;
+    padding: 0rem 1rem;
+    border-radius: 0.5rem;
+    background-color: var(--box-background-color-shade);
+    height: 24rem;
+    overflow-y: scroll;
+    //   &:-webkit-scrollbar {
+    //     display: none;
+    // }
+  }
+}
+@media only screen and (min-width: 680px) {
+  .section-2 {
+    padding: 2rem 4rem;
+  }
+}
+@media only screen and (min-width: 920px) {
+  .section-2 {
+    padding: 2rem 7rem;
+    grid-template-columns: 70% 30%;
+  }
+}
+// end section2
+
+// section 3
+.section-3 {
+  padding: 1.5rem 1rem;
+
+  .section-3-1 {
+    display: grid;
+    grid-template-columns: repeat(2, auto);
+    align-items: center;
+    padding-bottom: 2rem;
+
+    a {
+      text-align: right;
+      text-decoration: none;
+    }
+  }
+
+  .section-3-2 {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(8rem, 2fr));
+    grid-column-gap: 1rem;
+    grid-row-gap: 1rem;
+  }
+}
+@media only screen and (min-width: 680px) {
+  .section-3 {
+    padding: 1em 4em;
+  }
+}
+@media only screen and (min-width: 920px) {
+  .section-3 {
+    padding: 1em 8em;
+  }
+}
+//end section 3
+
+// section 4
+.section-4-0 {
+  display: grid;
+  grid-template-columns: 100%, 100%;
+  row-gap: 1rem;
+  column-gap: 1rem;
+
+  .section-4-1 {
+    padding: 0rem 1rem;
+    border-radius: 0.5rem;
+    background-color: var(--box-background-color-shade);
+  }
+}
+
+@media only screen and (min-width: 920px) {
+  .section-4-0 {
+    display: grid;
+    grid-template-columns: 30% 70%;
+    padding-top: 2em;
+    padding-bottom: 2em;
+  }
+  .section-3 {
+    padding: 1em 8em;
+  }
+}
+// end section 4
+
+// blog
+.blog-post {
+  padding: 1rem 1rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(12rem, 1fr));
+  grid-row-gap: 2rem;
+  grid-column-gap: 2rem;
+}
+@media only screen and (min-width: 680px) {
+  .blog-post {
+    padding: 2rem 4rem;
+    grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
+  }
+}
+@media only screen and (min-width: 920px) {
+  .blog-post {
+    padding: 4rem 7rem;
+  }
+}
+// /end blog

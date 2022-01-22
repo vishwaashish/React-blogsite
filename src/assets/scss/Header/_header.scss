@@ -1,0 +1,225 @@
+// header
+@import "../variables";
+
+header {
+  display: flex;
+  // background-color: var(--box-background-color);
+  transform-origin: left;
+  justify-content: space-between;
+  padding: 1em 1em;
+
+  .logo {
+    text-decoration: none;
+    font-size: 1.2rem;
+    color: var(--color);
+    margin-bottom: auto;
+    margin-top: auto;
+    text-decoration: none;
+  }
+
+  .togglemode {
+    margin-top: auto;
+    margin-bottom: auto;
+    .toggleinput {
+      opacity: 0;
+      position: absolute;
+    }
+    .label {
+      width: 50px;
+      height: 24px;
+      background-color: #4d4d4d;
+      display: flex;
+      border-radius: 50px;
+      align-items: center;
+      justify-content: space-between;
+      padding: 5px;
+      position: relative;
+      cursor: pointer;
+      pointer-events: initial;
+    }
+
+    .ball {
+      width: 20px;
+      height: 20px;
+      background-color: white;
+      border: 1px solid;
+      position: absolute;
+      top: 2px;
+      left: 2px;
+      border-radius: 50%;
+      transition: transform 0.2s linear;
+    }
+
+    .toggleinput:checked + .label .ball {
+      transform: translateX(24px);
+    }
+
+    &:hover {
+      .ball {
+        box-shadow: 0 0 2px 3px $primary;
+        transition: 0.2s ease-in-out;
+      }
+    }
+  }
+
+  .menu {
+    cursor: pointer;
+    width: 1.7em;
+    path {
+      fill: $primary;
+      &:hover {
+        fill: $primary-dark;
+      }
+    }
+    &:hover {
+      animation: navmenu 0.5s alternate-reverse infinite;
+    }
+  }
+}
+
+.open-nav {
+  transform: translateX(0%);
+}
+nav {
+  position: fixed;
+  top: 0;
+  right: 0;
+  height: 100vh;
+  background-color: var(--box-background-color);
+  background-image: linear-gradient(
+    180deg,
+    var(--box-background-color),
+    var(--background-color)
+  );
+  z-index: 999;
+  width: 40%;
+  transform: translateX(100%);
+  text-transform: uppercase;
+  transition: transform 0.5s ease-in-out;
+
+  ul {
+    list-style-type: none;
+    padding: 0;
+    margin-top: 5rem;
+    a {
+      text-decoration: none;
+      color: var(--color);
+      font-size: 1.1rem;
+      padding: 0.75rem 2rem;
+      display: block;
+      &:hover {
+        background-color: $gray-100;
+      }
+      &:focus {
+        background-color: $gray-100;
+      }
+    }
+  }
+  svg {
+    fill: $primary;
+  }
+
+  .close {
+    width: 2em;
+    float: right;
+    margin-top: 1rem;
+    margin-right: 1rem;
+    cursor: pointer;
+    &:hover {
+      animation: navmenu 0.5s alternate-reverse infinite;
+    }
+
+    .path {
+      fill: violet;
+    }
+  }
+}
+
+@media only screen and (min-width: 680px) {
+  header {
+    padding: 1em 4em;
+  }
+}
+@media only screen and (min-width: 920px) {
+  .menu {
+    display: none;
+  }
+  header {
+    padding: 0.1em 8em;
+  }
+  nav {
+    position: unset;
+    height: auto;
+    background-color: unset;
+    background-image: unset;
+    width: auto;
+    text-transform: uppercase;
+    transform: translateX(0%);
+    svg.close {
+      display: none;
+    }
+
+    ul {
+      display: flex;
+      margin: 0;
+
+      li {
+        padding: 0rem 0.5rem;
+      }
+
+      a {
+        color: var(--color);
+        padding: 0.5em 0.5em;
+        font-size: 0.9rem;
+        font-weight: 400;
+        position: relative;
+
+        &:after {
+          content: "";
+          position: absolute;
+          width: 100%;
+          height: 3px;
+          bottom: 6px;
+          left: 0;
+          background-color: $primary;
+          transform: scaleX(0);
+          transform-origin: bottom right;
+          transition: transform 0.3s;
+        }
+
+        &:hover {
+          background: none;
+          &:after {
+            transform-origin: bottom left;
+            transform: scaleX(1);
+          }
+        }
+        &:focus {
+          background: none;
+          &:after {
+            transform-origin: bottom left;
+            transform: scaleX(1);
+          }
+        }
+        &:active {
+          background: none;
+          &:after {
+            transform-origin: bottom left;
+            transform: scaleX(1);
+          }
+        }
+      }
+    }
+  }
+}
+
+@keyframes navmenu {
+  from {
+    // transform: rotate(-20deg);
+    transform: scale(1);
+  }
+  to {
+    transform: scale(1.25);
+  }
+}
+//   end header
