@@ -8,8 +8,6 @@ import Home from "./pages/Home";
 import Blog from "./pages/Post/Blog";
 
 function App() {
-
-  // console.log(data, "data");
   return (
     <div className="App ">
       <HashRouter>

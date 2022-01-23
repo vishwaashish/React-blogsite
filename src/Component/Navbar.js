@@ -3,22 +3,24 @@ import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import { DARKMODE } from '../Redux/action/action';
+import ModalSearch from './Modal/ModalSearch';
 
 const Navbar = () => {
     const [navtoggle, setNavToggle] = React.useState(true)
+    const [togglesearch, setTogglesearch] = React.useState(false)
 
     const toggle = useSelector(state => state.Darkmode)
     const dispatch = useDispatch()
-
-    useEffect(() => {
-        console.log(toggle, "switch");
-    }, [])
 
     useEffect(() => {
         const root = document.documentElement;
         root?.style.setProperty(
             '--background-color',
             toggle ? "#1c1c27" : "#fff"
+        );
+        root?.style.setProperty(
+            "--background-color-shade",
+            toggle ? "#1c1c27" : "#f9f9f9"
         );
         root?.style.setProperty(
             "--color",
@@ -48,7 +50,6 @@ const Navbar = () => {
     }, [toggle]);
 
     const Togglefuc = (e) => {
-        console.log(e.target.checked);
         const { checked } = e.target
         if (checked) {
             dispatch(DARKMODE())
@@ -56,9 +57,12 @@ const Navbar = () => {
             dispatch(DARKMODE())
         }
     }
-
+    const ToggleSearch = () => {
+        setTogglesearch(togglesearch => !togglesearch)
+    }
     return (<>
         <div className="wrapper">
+            {togglesearch && <ModalSearch toggle={setTogglesearch} isOpen={togglesearch} />}
             <header className='shadow-sm'>
                 <NavLink to="/" className="logo" >Technotaught</NavLink>
                 <div style={{ display: 'flex' }}>
@@ -80,13 +84,15 @@ const Navbar = () => {
                             <div className='ball'></div>
                         </label>
                     </div>
+                    <div className="navbar-search" onClick={ToggleSearch}>
+                        <i className='fa fa-search' />
+                    </div>
                 </div>
                 <svg className="menu" onClick={() => setNavToggle(navtoggle => !navtoggle)} viewBox="0 0 48 32" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M24 32H0V26.6667H24V32ZM48 18.6667H0V13.3333H48V18.6667ZM48 5.33333H24V0H48V5.33333Z" fill="black" />
                 </svg>
             </header>
             {toggle ? <div className='toggleeffect'>
-                {/* <i className='fa fa-cloud'/> */}
             </div> : <div className='toggleeffect1'></div>}
 
         </div>

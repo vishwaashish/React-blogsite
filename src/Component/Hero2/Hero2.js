@@ -1,41 +1,17 @@
 import React from 'react';
-import ContentLoader from 'react-content-loader';
 import { NavLink } from 'react-router-dom';
 import CardStyle1 from '../CardStyle/CardStyle1';
 import CardStyle2 from '../CardStyle/CardStyle2';
 import CardStyle3 from '../CardStyle/CardStyle3';
 import HeroSection from '../Hero/HeroSection';
 import { randompost, uniquepost } from '../Postcount/PostLogic';
-
 const Hero2 = (props) => {
     const { data, error, isLoading } = props.posts
-    const randomarticle1 = uniquepost(data)
+    const randomarticle1 = uniquepost(data, 1)
     const randomarticle2 = randompost(data, 10)
     const randomarticle3 = randompost(data, 4)
     const randomarticle4 = randompost(data, 3)
-    // console.log(randomarticle1);
-    // 
 
-    const Loader1 = () => {
-        return (
-            <ContentLoader
-                speed={2}
-                width={400}
-                height={460}
-                viewBox="0 0 400 460"
-                backgroundColor="#f3f3f3"
-                foregroundColor="#ecebeb"
-                {...props}
-            >
-                <rect x="0" y="305" rx="2" ry="2" width="500" height="8" />
-                <rect x="0" y="19" rx="2" ry="2" width="500" height="248" />
-                <rect x="0" y="277" rx="0" ry="0" width="500" height="20" />
-                <rect x="0" y="318" rx="2" ry="2" width="500" height="8" />
-                <rect x="0" y="330" rx="2" ry="2" width="500" height="8" />
-            </ContentLoader>
-        )
-
-    }
     const Spinner = () => (
         <div style={{ display: 'flex', height: '100vh', justifyContent: 'center', alignItems: 'center' }}>
             <svg className="spinner" viewBox="0 0 50 50">
@@ -47,16 +23,23 @@ const Hero2 = (props) => {
         <>
             {
                 isLoading ? <Spinner /> : <>
-
+                    <div className='hero1'>
+                        <div className='hero1-image'>
+                            <img src={randomarticle1.image_lg} />
+                        </div>
+                        <div className='hero1-body'>
+                            <h1 className='title'>{randomarticle1 && randomarticle1.title}</h1>
+                            <div className="description" dangerouslySetInnerHTML={{ __html: randomarticle1 && randomarticle1.description }}></div>
+                            <NavLink to={"/post/" + randomarticle1.id} ><button><i className='fa fa-hand-pointer' /></button></NavLink>
+                        </div>
+                    </div>
                     <div className="section-2">
                         <div className="section-2-0">
-
                             <div className="section-2-1">
                                 <CardStyle1 posts={!!data && data[1]} />
                             </div>
                             <div className="section-2-2">
                                 <CardStyle1 posts={!!data && data[5]} />
-
                             </div>
                         </div>
                         <div className="section-2-3">
@@ -86,7 +69,6 @@ const Hero2 = (props) => {
                                 {
                                     randomarticle4 && randomarticle4.map((item, index) =>
                                         <CardStyle2 key={index} posts={item} />
-
                                     )
                                 }
                             </div>

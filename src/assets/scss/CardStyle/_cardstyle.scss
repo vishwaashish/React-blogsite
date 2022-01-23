@@ -6,11 +6,11 @@
 
   &:hover {
     box-shadow: 0 0 2px 3px $primary;
-    transition: .3s ease-in-out;
+    transition: 0.3s ease-in-out;
   }
   &:focus-within {
     box-shadow: 0 0 2px 3px $primary;
-    transition: .3s ease-in-out;
+    transition: 0.3s ease-in-out;
   }
 }
 .card {
@@ -69,8 +69,16 @@
       display: none;
     }
 
-    img {
+    .cardstyle-img-3 {
       height: calc(9em + 1vw);
+      border-top-left-radius: 0.5rem;
+      border-top-right-radius: 0.5rem;
+      width: 100%;
+      display: block;
+      object-fit: cover;
+    }
+    .cardstyle-img-4 {
+      height: calc(15em + 1vw);
       border-top-left-radius: 0.5rem;
       border-top-right-radius: 0.5rem;
       width: 100%;
@@ -107,8 +115,7 @@
     padding: calc(0.5rem + 0.6vw);
     .card-description {
       padding-top: 0.1rem;
-      padding-bottom: 0.1rem;
-      // color: $gray-700;
+      padding-bottom: 0.2rem;
       text-transform: capitalize;
     }
     a {
@@ -140,26 +147,3 @@
 
 @media only screen and (min-width: $breakdown-lg) {
 }
-
-//end card
-// //card1
-// .card1 {
-//   position: relative;
-//   display: flex;
-//   flex-direction: column;
-//   min-width: 0;
-// }
-// //end card1
-
-// //card2
-// .card2 {
-//   position: relative;
-//   display: flex;
-//   flex-direction: column;
-//   min-width: 0;
-
-//   border-radius: 0.5rem;
-//   box-shadow: 0 0 1rem -0.2rem $gray-300;
-//   // margin: 1rem;
-// }
-// //end card2

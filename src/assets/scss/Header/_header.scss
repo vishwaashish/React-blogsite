@@ -3,7 +3,6 @@
 
 header {
   display: flex;
-  // background-color: var(--box-background-color);
   transform-origin: left;
   justify-content: space-between;
   padding: 1em 1em;
@@ -62,6 +61,17 @@ header {
     }
   }
 
+  .navbar-search {
+    margin: auto;
+    padding-left: calc(1em + 0.6vw);
+    font-size: 1.5em;
+    cursor: pointer;
+    &:hover {
+      transition: 0.3s ease-in-out;
+      transform: scale(0.9);
+    }
+  }
+
   .menu {
     cursor: pointer;
     width: 1.7em;
@@ -92,7 +102,7 @@ nav {
     var(--background-color)
   );
   z-index: 999;
-  width: 40%;
+  width: 50%;
   transform: translateX(100%);
   text-transform: uppercase;
   transition: transform 0.5s ease-in-out;
@@ -138,6 +148,9 @@ nav {
 @media only screen and (min-width: 680px) {
   header {
     padding: 1em 4em;
+    .togglemode {
+      padding-left: 1em;
+    }
   }
 }
 @media only screen and (min-width: 920px) {

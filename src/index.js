@@ -7,7 +7,7 @@ import store from './Redux/store';
 import { Provider } from 'react-redux';
 const queryClient = new QueryClient();
 
-store.subscribe(() => console.log(store.getState()))
+// store.subscribe(() => console.log(store.getState()))
 
 ReactDOM.render(
   <React.StrictMode>

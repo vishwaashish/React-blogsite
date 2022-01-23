@@ -17,17 +17,15 @@ const Home = () => {
         })
 
     const carousal = !!data && carousalpost(data, 5)
-    const randomposts = randompost(data, 2)
-    // console.log(randomposts);
 
     return (
         <>
             <Navbar />
-            <HeroSection posts={{
+            {/* <HeroSection posts={{
                 data: carousal,
                 error: error,
                 isLoading: isLoading,
-            }} />
+            }} /> */}
             <Hero2 posts={{
                 data: data,
                 error: error,

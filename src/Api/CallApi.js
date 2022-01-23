@@ -1,7 +1,9 @@
-import axios from "axios"
-
-
+import { jsondata } from "./data"
 export const Callgetapi = async () => {
-    const response = await axios.get('https://fakestoreapi.com/products')
-    return response.data
+    return jsondata
+}
+
+export const Callgetapibyid = async (id) => {
+    const resp = jsondata.find(val => val.id === +id.id)
+    return resp
 }
