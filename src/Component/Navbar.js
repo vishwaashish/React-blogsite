@@ -64,7 +64,7 @@ const Navbar = () => {
         <div className="wrapper">
             {togglesearch && <ModalSearch toggle={setTogglesearch} isOpen={togglesearch} />}
             <header className='shadow-sm'>
-                <NavLink to="/" className="logo" >Technotaught</NavLink>
+                <NavLink to="/" className="logo" >Blogify</NavLink>
                 <div style={{ display: 'flex' }}>
                     <nav className={!navtoggle ? 'open-nav' : ""}>
                         <svg className="close" onClick={() => setNavToggle(navtoggle => !navtoggle)} viewBox="0 0 24 24" fill="black" >
@@ -100,4 +100,4 @@ const Navbar = () => {
     </>);
 };
 
-export default Navbar
+export default React.memo(Navbar)

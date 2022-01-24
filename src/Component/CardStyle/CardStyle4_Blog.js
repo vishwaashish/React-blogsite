@@ -25,4 +25,4 @@ const CardStyle4_Blog = (props) => {
   );
 };
 
-export default CardStyle4_Blog;
+export default React.memo(CardStyle4_Blog);

@@ -1,11 +1,13 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { NavLink } from 'react-router-dom';
 import CardStyle1 from '../CardStyle/CardStyle1';
 import CardStyle2 from '../CardStyle/CardStyle2';
 import CardStyle3 from '../CardStyle/CardStyle3';
 import HeroSection from '../Hero/HeroSection';
 import { randompost, uniquepost } from '../Postcount/PostLogic';
+import Hero1 from './Hero1';
 const Hero2 = (props) => {
+    const scroll1 = React.useRef(null)
     const { data, error, isLoading } = props.posts
     const randomarticle1 = uniquepost(data, 1)
     const randomarticle2 = randompost(data, 10)
@@ -23,17 +25,11 @@ const Hero2 = (props) => {
         <>
             {
                 isLoading ? <Spinner /> : <>
-                    <div className='hero1'>
-                        <div className='hero1-image'>
-                            <img src={randomarticle1.image_lg} />
-                        </div>
-                        <div className='hero1-body'>
-                            <h1 className='title'>{randomarticle1 && randomarticle1.title}</h1>
-                            <div className="description" dangerouslySetInnerHTML={{ __html: randomarticle1 && randomarticle1.description }}></div>
-                            <NavLink to={"/post/" + randomarticle1.id} ><button><i className='fa fa-hand-pointer' /></button></NavLink>
-                        </div>
-                    </div>
-                    <div className="section-2">
+                    <Hero1
+                        randomarticle1={randomarticle1}
+                        data={data && data[8]}
+                    />
+                    <div className="section-2" id="section2" ref={scroll1}>
                         <div className="section-2-0">
                             <div className="section-2-1">
                                 <CardStyle1 posts={!!data && data[1]} />
@@ -50,7 +46,7 @@ const Hero2 = (props) => {
                             }
                         </div>
                     </div>
-                    <div className='section-3'>
+                    <div className='section-3' id="section3">
                         <div className="section-3-1">
                             <h2>The Science Behind</h2>
                             <NavLink to="/blog" ><button className='outline btn-sm'>View More</button></NavLink>
@@ -63,7 +59,7 @@ const Hero2 = (props) => {
                             }
                         </div>
                     </div>
-                    <div className='section-3'>
+                    <div className='section-3' id="section4">
                         <div className="section-4-0">
                             <div className="section-4-1">
                                 {
@@ -88,4 +84,4 @@ const Hero2 = (props) => {
     );
 };
 
-export default Hero2;
+export default React.memo(Hero2);

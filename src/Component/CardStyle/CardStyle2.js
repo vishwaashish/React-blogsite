@@ -18,4 +18,4 @@ const CardStyle2 = (props) => {
   );
 };
 
-export default CardStyle2;
+export default React.memo(CardStyle2);

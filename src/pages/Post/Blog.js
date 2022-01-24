@@ -39,4 +39,4 @@ const Blog = () => {
     );
 };
 
-export default Blog;
+export default React.memo(Blog);

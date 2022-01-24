@@ -25,4 +25,4 @@ const CardStyle3 = (props) => {
   );
 };
 
-export default CardStyle3;
+export default React.memo(CardStyle3);

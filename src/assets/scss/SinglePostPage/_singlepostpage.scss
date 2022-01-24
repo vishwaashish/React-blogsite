@@ -73,9 +73,10 @@
           i {
             font-size: calc(1em + 1vw);
             padding: 0rem 0.3rem;
+            color: var(--pcolor);
 
             &:hover {
-              color: $primary;
+              // color: $primary;
               transform: translateY(-10%);
               transition: 0.2s ease-in-out;
             }

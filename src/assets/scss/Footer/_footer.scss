@@ -44,6 +44,13 @@
     grid-column-gap: 4rem;
     .footer-1-1 {
       grid-column: 1 / span 2;
+      .abouttitle {
+        a {
+          &:hover {
+            color: $primary !important;
+          }
+        }
+      }
     }
   }
 

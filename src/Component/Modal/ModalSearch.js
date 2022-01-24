@@ -42,13 +42,17 @@ const ModalSearch = (props) => {
                 <div className="search-div-result" >{
                     apidata.map((item, index) => {
                         const parts = String(item.title).split(patt);
-                        return <NavLink to={"/post/" + item.id} key={index} onClick={ToggleClose} >  <div className="search-result">
-                            {
-                                parts.map((part, index) => (
-                                    patt.test(part) ? <mark key={index}>{part}</mark> : part
-                                ))
-                            }
-                        </div>
+                        return <NavLink to={"/post/" + item.id} key={index} onClick={ToggleClose} >
+                            <div className="search-result">
+                                <i className='fa fa-file-alt' />
+                                <p>
+                                    {
+                                        parts.map((part, index) => (
+                                            patt.test(part) ? <mark key={index}>{part}</mark> : part
+                                        ))
+                                    }
+                                </p>
+                            </div>
                         </NavLink>
                     })
                 }</div>
@@ -80,4 +84,4 @@ const ModalSearch = (props) => {
     );
 };
 
-export default ModalSearch;
+export default React.memo(ModalSearch);

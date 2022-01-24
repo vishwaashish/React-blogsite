@@ -89,4 +89,4 @@ const Sliderbtn = (props) => {
         </button>
     )
 }
-export default HeroSection;
+export default React.memo(HeroSection);

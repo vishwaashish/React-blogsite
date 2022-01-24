@@ -139,7 +139,7 @@ button:hover {
 
 button.outline {
   color: #7e49f2;
-  background-color: #fff;
+  background-color: var(--box-background-color);
   -webkit-box-shadow: 0 0 0 0.1rem #7e49f2;
           box-shadow: 0 0 0 0.1rem #7e49f2;
 }
@@ -169,6 +169,26 @@ button.btn-sm {
 .shadow {
   -webkit-box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15) !important;
           box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15) !important;
+}
+
+.fa-facebook:hover {
+  color: #3b5999 !important;
+}
+
+.fa-instagram:hover {
+  color: #e4405f !important;
+}
+
+.fa-youtube:hover {
+  color: #cd201f !important;
+}
+
+.fa-whatsapp:hover {
+  color: #25d366 !important;
+}
+
+.fa-envelope:hover {
+  color: #ffa930 !important;
 }
 
 .spinner {
@@ -230,18 +250,17 @@ button.btn-sm {
   }
 }
 
-.hero1 .hero1-image img {
-  width: 100%;
+.hero1 {
   height: 100vh;
-  -o-object-fit: cover;
-     object-fit: cover;
-  opacity: 0.8;
-  background-color: rgba(0, 0, 0, 0.8);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-attachment: scroll;
+  background-size: cover;
 }
 
 .hero1 .hero1-body {
-  -webkit-box-shadow: 0 2px 10px 0.3rem rgba(0, 0, 0, 0.15);
-          box-shadow: 0 2px 10px 0.3rem rgba(0, 0, 0, 0.15);
+  -webkit-box-shadow: 0 2px 10px 0.3rem #00000026;
+          box-shadow: 0 2px 10px 0.3rem #00000026;
   padding: 4rem 2rem;
   text-align: center;
   border-radius: 50%;
@@ -283,7 +302,7 @@ button.btn-sm {
 
 .hero1 .hero1-body button i {
   font-size: 1.5rem;
-  padding: .2rem 0;
+  padding: 0.2rem 0;
 }
 
 @media only screen and (min-width: 680px) {
@@ -1118,6 +1137,10 @@ nav .close .path {
   grid-column: 1 / span 2;
 }
 
+.footers .footer-1 .footer-1-1 .abouttitle a:hover {
+  color: #7e49f2 !important;
+}
+
 .footers .footer-2 {
   background-color: #212529;
   display: -ms-grid;
@@ -1280,10 +1303,10 @@ nav .close .path {
 .singlepage .singlepage-box .singlepage-content .social-share ul i {
   font-size: calc(1em + 1vw);
   padding: 0rem 0.3rem;
+  color: var(--pcolor);
 }
 
 .singlepage .singlepage-box .singlepage-content .social-share ul i:hover {
-  color: #7e49f2;
   -webkit-transform: translateY(-10%);
           transform: translateY(-10%);
   -webkit-transition: 0.2s ease-in-out;
@@ -1433,7 +1456,11 @@ nav .close .path {
   -webkit-box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.095);
           box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.095);
   border-radius: 0.2rem;
-  padding: 0.8rem 1rem;
+  padding: .8rem 1rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin: auto;
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
@@ -1442,6 +1469,12 @@ nav .close .path {
   font-weight: 500;
   letter-spacing: 0.02rem;
   cursor: pointer;
+}
+
+.modal-search .modal-search-dialog .modal-search-body .search-result i {
+  padding-right: 0.7rem;
+  color: var(--pcolor);
+  font-size: 1.5rem;
 }
 
 .modal-search .modal-search-dialog .modal-search-body .search-result:hover {

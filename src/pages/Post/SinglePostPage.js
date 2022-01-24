@@ -3,12 +3,12 @@ import React from 'react';
 import { useQuery } from 'react-query';
 import { useLocation, useNavigate, useParams } from 'react-router-dom';
 import { Callgetapibyid } from '../../Api/CallApi';
+import { jsondata } from '../../Api/data';
 import Footer from '../../Component/Footer/Footer';
 import Navbar from '../../Component/Navbar';
 const SinglePostPage = (prop) => {
   const navigate = useNavigate()
   const param = useParams()
-  const { pathname } = useLocation();
   const { data, isLoading } = useQuery(['singlepost', param], async () => {
     try {
       return await Callgetapibyid(param)
@@ -16,16 +16,10 @@ const SinglePostPage = (prop) => {
       throw new Error("Error")
     }
   })
-
   React.useEffect(() => {
     window.scrollTo(0, 0);
-  }, [pathname]);
+  }, [param]);
 
-  var stringToHTML = function (str) {
-    var parser = new DOMParser();
-    var doc = parser.parseFromString(str, 'text/html');
-    return doc.body;
-  };
   const Spinner = () => (
     <div style={{ display: 'flex', height: 400, justifyContent: 'center', alignItems: 'center' }}>
       <svg className="spinner" viewBox="0 0 50 50">
@@ -44,17 +38,16 @@ const SinglePostPage = (prop) => {
             !isLoading ? <>
               <i className='fa fa-arrow-alt-circle-left' onClick={() => navigate(-1)} />
               <div className='date'>{moment().format('LL')}</div>
-              <h1>{data && data.title}</h1>
+              <h1>{data?.title ?? jsondata[9].title}</h1>
               <div className="break-line">
                 <svg >
                   <path d="M 10 10 L 300 10" />
                 </svg>
               </div>
               <div className="image">
-                {<img src={data && data.image_lg} loading="lazy" alt={data && data.title} />}
+                {<img src={data?.image_lg ?? jsondata[9].image_lg} loading="lazy" alt={data?.title ?? jsondata[9].title} />}
               </div>
-              {/* <div className="description">{data && parse(String(data?.description))}</div> */}
-              <div className="description" dangerouslySetInnerHTML={{ __html: data?.description }}>
+              <div className="description" dangerouslySetInnerHTML={{ __html: data?.description ?? jsondata[9].description }}>
               </div>
               <div className='social-share'>
                 <p>Share on</p>
@@ -80,8 +73,7 @@ const SinglePostPage = (prop) => {
     </div>
     <Footer />
   </>
-
   );
 };
 
-export default SinglePostPage;
+export default React.memo(SinglePostPage);
