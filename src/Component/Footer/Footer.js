@@ -7,7 +7,7 @@ const Footer = () => {
     }
     return (
         <>
-            <div className="footers">
+            <div className="footers" id="footer">
                 <div className="footer-1">
                     <div className="footer-1-1">
                         <h2 className="abouttitle"><NavLink to="/" onClick={ScrollUp}>Blogify</NavLink></h2>
@@ -38,11 +38,11 @@ const Footer = () => {
                     </div>
                     <div className="footer-2-2">
                         <ul>
-                            <li><NavLink to="/"><i className='fab fa-facebook' /></NavLink></li>
-                            <li><NavLink to="/"><i className='fab fa-instagram' /></NavLink></li>
-                            <li><NavLink to="/"><i className='fab fa-youtube' /></NavLink></li>
-                            <li><NavLink to="/"><i className='fab fa-whatsapp' /></NavLink></li>
-                            <li><NavLink to="/"><i className='fas fa-envelope' /></NavLink></li>
+                            <li><a href="/" target="_blank"><i className='fab fa-facebook' /></a></li>
+                            <li><a href="/" target="_blank"><i className='fab fa-instagram' /></a></li>
+                            <li><a href="/" target="_blank"><i className='fab fa-youtube' /></a></li>
+                            <li><a href="/" target="_blank"><i className='fab fa-whatsapp' /></a></li>
+                            <li><a href="mailto:vishwakarmaashish165@gmail.com"><i className='fas fa-envelope' /></a></li>
                         </ul>
                     </div>
                 </div>

@@ -16,6 +16,7 @@
           box-sizing: border-box;
   font-family: "Poppins", sans-serif;
   scroll-behavior: smooth;
+  -webkit-tap-highlight-color: transparent;
 }
 
 body {
@@ -87,6 +88,30 @@ a:hover {
 
 a:focus {
   color: #480ec7;
+}
+
+.a_header {
+  color: #7e49f2;
+}
+
+.a_header:hover {
+  color: #480ec7;
+}
+
+.a_header:focus {
+  color: #480ec7;
+}
+
+@media screen and (min-width: 680px) {
+  .a_header {
+    color: white;
+  }
+  .a_header:hover {
+    color: #480ec7;
+  }
+  .a_header:focus {
+    color: #480ec7;
+  }
 }
 
 a.underline:after {
@@ -533,6 +558,7 @@ header .togglemode .label {
   position: relative;
   cursor: pointer;
   pointer-events: initial;
+  -webkit-tap-highlight-color: transparent;
 }
 
 header .togglemode .ball {
@@ -603,9 +629,7 @@ nav {
   top: 0;
   right: 0;
   height: 100vh;
-  background-color: var(--box-background-color);
-  background-image: -webkit-gradient(linear, left top, left bottom, from(var(--box-background-color)), to(var(--background-color)));
-  background-image: linear-gradient(180deg, var(--box-background-color), var(--background-color));
+  background-color: var(--box-background-color-shade);
   z-index: 999;
   width: 50%;
   -webkit-transform: translateX(100%);
@@ -698,7 +722,6 @@ nav .close .path {
     padding: 0rem 0.5rem;
   }
   nav ul a {
-    color: var(--color);
     padding: 0.5em 0.5em;
     font-size: 0.9rem;
     font-weight: 400;

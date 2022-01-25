@@ -17,6 +17,7 @@
   box-sizing: border-box;
   font-family: "Poppins", sans-serif;
   scroll-behavior: smooth;
+  -webkit-tap-highlight-color: transparent;
 }
 
 body {
@@ -79,7 +80,27 @@ a {
     color: darken($primary, 20%);
   }
 }
+.a_header {
+  color: $primary;
+  &:hover {
+    color: darken($primary, 20%);
+  }
+  &:focus {
+    color: darken($primary, 20%);
+  }
+}
 
+@media screen and (min-width: $breakdown-md) {
+  .a_header {
+    color: white;
+    &:hover {
+      color: darken($primary, 20%);
+    }
+    &:focus {
+      color: darken($primary, 20%);
+    }
+  }
+}
 a.underline {
   &:after {
     content: "";

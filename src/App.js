@@ -13,13 +13,14 @@ function App() {
       <HashRouter>
         <Routes>
           <Route path="/" element={<Home />} />
+          {/* <Route path="#footer" element={<Home />} /> */}
           <Route path="/blog" element={<Blog />} />
           <Route path="/post/:id" element={<SinglePostPage />} />
           <Route path="/post" element={<SinglePostPage />} />
           <Route path="*" element={<Home />} />
         </Routes>
       </HashRouter>
-      
+
     </div>
   );
 }
