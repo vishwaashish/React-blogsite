@@ -1,5 +1,6 @@
 import React from 'react';
 import { useQuery } from 'react-query';
+import { useLocation } from 'react-router-dom';
 import { Callgetapi } from '../Api/CallApi';
 import Footer from '../Component/Footer/Footer';
 import HeroSection from '../Component/Hero/HeroSection';
@@ -16,6 +17,11 @@ const Home = () => {
             staleTime: Infinity
         })
 
+    const history = useLocation()
+
+    React.useEffect(() => {
+
+    }, [])
     const carousal = !!data && carousalpost(data, 5)
 
     return (

@@ -1,9 +1,10 @@
 
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useLocation } from 'react-router-dom';
 import { DARKMODE } from '../Redux/action/action';
 import ModalSearch from './Modal/ModalSearch';
+import styled from 'styled-components';
 
 const Navbar = () => {
     const [navtoggle, setNavToggle] = React.useState(true)
@@ -11,6 +12,14 @@ const Navbar = () => {
 
     const toggle = useSelector(state => state.Darkmode)
     const dispatch = useDispatch()
+
+    const history = useLocation()
+    const headerhide = React.useRef(null)
+
+    const pathname = history.pathname === "/" || history.pathname === "/home"
+
+
+
 
     useEffect(() => {
         const root = document.documentElement;
@@ -60,10 +69,16 @@ const Navbar = () => {
     const ToggleSearch = () => {
         setTogglesearch(togglesearch => !togglesearch)
     }
+
+    const StyleHader = {
+        position: pathname ? 'absolute' : 'relative',
+        width: '100%',
+        boxShadow: pathname ? 'unset' : '0 0.125rem 0.25rem rgba(0, 0, 0, 0.075)'
+    }
     return (<>
         <div className="wrapper">
             {togglesearch && <ModalSearch toggle={setTogglesearch} isOpen={togglesearch} />}
-            <header className='shadow-sm'>
+            <header ref={headerhide} style={StyleHader}>
                 <NavLink to="/" className="logo" >Blogify</NavLink>
                 <div style={{ display: 'flex' }}>
                     <nav className={!navtoggle ? 'open-nav' : ""}>
