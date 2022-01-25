@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/React-blogsite/static/css/main.454bb864.css",
-    "main.js": "/React-blogsite/static/js/main.406bf8d6.js",
+    "main.css": "/React-blogsite/static/css/main.beb8e718.css",
+    "main.js": "/React-blogsite/static/js/main.296215f3.js",
     "static/media/fa-solid-900.svg": "/React-blogsite/static/media/fa-solid-900.7a8b4f130182d19a2d7c.svg",
     "static/media/fa-brands-400.svg": "/React-blogsite/static/media/fa-brands-400.2f517e09eb2ca6650ff5.svg",
     "static/media/8.jpg": "/React-blogsite/static/media/8.58e40e90f067e2972c03.jpg",
@@ -30,11 +30,11 @@
     "static/media/fa-regular-400.woff": "/React-blogsite/static/media/fa-regular-400.bb58e57c48a3e911f15f.woff",
     "static/media/fa-regular-400.woff2": "/React-blogsite/static/media/fa-regular-400.7a3337626410ca2f4071.woff2",
     "index.html": "/React-blogsite/index.html",
-    "main.454bb864.css.map": "/React-blogsite/static/css/main.454bb864.css.map",
-    "main.406bf8d6.js.map": "/React-blogsite/static/js/main.406bf8d6.js.map"
+    "main.beb8e718.css.map": "/React-blogsite/static/css/main.beb8e718.css.map",
+    "main.296215f3.js.map": "/React-blogsite/static/js/main.296215f3.js.map"
   },
   "entrypoints": [
-    "static/css/main.454bb864.css",
-    "static/js/main.406bf8d6.js"
+    "static/css/main.beb8e718.css",
+    "static/js/main.296215f3.js"
   ]
 }
