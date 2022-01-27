@@ -99,8 +99,8 @@ const Navbar = () => {
                     <div className='togglemode'>
                         <input type="checkbox" className="toggleinput" id="checkbox" onChange={Togglefuc} />
                         <label htmlFor="checkbox" className="label">
-                            <span className="toggle-moon">🌜</span>
                             <span className='toggle-sun'>🌞</span>
+                            <span className="toggle-moon">🌜</span>
                             <div className='ball'></div>
                         </label>
                     </div>

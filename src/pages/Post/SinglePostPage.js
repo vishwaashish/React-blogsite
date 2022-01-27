@@ -6,6 +6,7 @@ import { Callgetapibyid } from '../../Api/CallApi';
 import { jsondata } from '../../Api/data';
 import Footer from '../../Component/Footer/Footer';
 import Navbar from '../../Component/Navbar';
+import SocialShare from '../../Component/Social share/SocialShare';
 const SinglePostPage = (prop) => {
   const navigate = useNavigate()
   const param = useParams()
@@ -29,6 +30,19 @@ const SinglePostPage = (prop) => {
   )
   return (<>
     <Navbar />
+    <SocialShare
+
+      shareparam={
+        {
+          facebook: "facebook",
+          instagram: "instagram",
+          youtube: "youtube",
+          whatsapp: "whatsapp",
+          envelope: "envelope",
+        }
+      }
+
+    />
     <div className="singlepage">
       <div className="singlepage-image">
       </div>
