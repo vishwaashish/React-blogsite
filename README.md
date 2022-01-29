@@ -2,7 +2,13 @@
 
 > A React-blogsite
 
-`React-blogsite` is a simple [react.js](https://reactjs.org/) web application, just for knowledge purposes created by [Ashishkumar Vishwakarma](https://github.com/vishwaashish). Everyone is welcome to use it. If you have any questions or suggestions about a look, feel, or anything. Please let us know.
+`React-blogsite` is a simple [react.js](https://reactjs.org/) web application, just for knowledge purposes created by [Ashishkumar Vishwakarma](https://github.com/vishwaashish). 
+
+Everyone is welcome to use it. 
+
+If you have any questions or suggestions about a look, feel, or anything. Please let us know.
+
+Email: - [vishwakarmaashish165@gmail.com](mailto:vishwakarmaashish165@gmail.com)
 
 ## Instructions to Install
 
