@@ -1541,6 +1541,7 @@ nav .close .path {
 }
 
 .fixed-social-share {
+  z-index: 999999;
   -webkit-transform: translateX(-10rem);
           transform: translateX(-10rem);
   display: -webkit-box;

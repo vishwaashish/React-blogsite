@@ -4,6 +4,7 @@
 }
 
 .fixed-social-share {
+  z-index: 999999;
   transform: translateX(-10rem);
   display: flex;
   align-items: center;
