@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.css": "/React-blogsite/static/css/main.e590fb08.css",
+    "main.css": "/React-blogsite/static/css/main.4e27bb88.css",
     "main.js": "/React-blogsite/static/js/main.9d88164e.js",
     "static/media/fa-solid-900.svg": "/React-blogsite/static/media/fa-solid-900.7a8b4f130182d19a2d7c.svg",
     "static/media/fa-brands-400.svg": "/React-blogsite/static/media/fa-brands-400.2f517e09eb2ca6650ff5.svg",
@@ -30,11 +30,11 @@
     "static/media/fa-regular-400.woff": "/React-blogsite/static/media/fa-regular-400.bb58e57c48a3e911f15f.woff",
     "static/media/fa-regular-400.woff2": "/React-blogsite/static/media/fa-regular-400.7a3337626410ca2f4071.woff2",
     "index.html": "/React-blogsite/index.html",
-    "main.e590fb08.css.map": "/React-blogsite/static/css/main.e590fb08.css.map",
+    "main.4e27bb88.css.map": "/React-blogsite/static/css/main.4e27bb88.css.map",
     "main.9d88164e.js.map": "/React-blogsite/static/js/main.9d88164e.js.map"
   },
   "entrypoints": [
-    "static/css/main.e590fb08.css",
+    "static/css/main.4e27bb88.css",
     "static/js/main.9d88164e.js"
   ]
 }
