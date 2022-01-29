@@ -1,49 +1,36 @@
 import React from 'react';
 
-const SocialShare = () => {
+const SocialShare = (props) => {
+    const { title, description, image_lg } = props?.shareparam
+    const [toogle, setoTggle] = React.useState(false)
+    const currenthref = window.location.href
+    const Toggle = () => {
+        setoTggle(toogle => !toogle)
+    }
     return (<div>
-        {/* <div class="float-sm">
-            <div class="fl-fl float-fb">
-                <a href="" target="_blank"> Like us!</a>
-                <i class="fab fa-facebook"></i>
+        <div className={toogle ? "fixed-social-share open-social-share" : "fixed-social-share"}>
+            <div className='icon'>
+                <div className="fl-fl">
+                    <a href={`https://www.facebook.com/sharer/sharer.php?u=${currenthref}&quote=${!!title ?? ""}`} target="_blank"><i className='fab fa-facebook' /></a>
+                </div>
+                <div className="fl-fl">
+                    <a href={`http://twitter.com/share?text=${title ?? ""}&url=${currenthref}`}><i className='fab fa-twitter' /></a>
+                </div>
+                <div className="fl-fl">
+                    <a href={currenthref} target="_blank"> <i className="fa fa-rss"></i></a>
+                </div>
+                <div className="fl-fl">
+                    <a href={`"https://www.pinterest.com/pin/create/button/?url=${currenthref}&media=${image_lg ?? ""}&description=${description ?? ""}`} target="_blank"><i className='fab fa-pinterest' /></a>
+                </div>
+                <div className="fl-fl">
+                    <a href={`https://wa.me/?text=${currenthref}`} target="_blank"><i className='fab fa-whatsapp' /></a>
+                </div>
             </div>
-            <div class="fl-fl float-tw">
-                <a href="" target="_blank">Follow us!</a>
-                <i class="fab fa-twitter"></i>
+            <div className='toggle-icon' onClick={Toggle}>
+                <i className={toogle ? "fas fa-angle-double-right rotate-left" : "fas fa-angle-double-right rotate-right"} />
             </div>
-            <div class="fl-fl float-gp">
-                <a href="" target="_blank">Recommend us!</a>
-                <i class="fab fa-google-plus"></i>
-            </div>
-            <div class="fl-fl float-rs">
-                <a href="" target="_blank">Follow via RSS</a>
-                <i class="fa fa-rss"></i>
-            </div>
-            <div class="fl-fl float-ig">
-                <a href="" target="_blank">Follow us!</a>
-                <i class="fab fa-instagram"></i>
-            </div>
-            <div class="fl-fl float-pn">
-                <a href="" target="_blank">Follow us!</a>
-                <i class="fab fa-pinterest"></i>
-            </div>
-        </div> */}
-        {/* <aside class="share" ng-app="app" ng-controller="ShareCtrl">
-            <ul>
-                <li class="share-fb"><a href="#" data-tooltip="{{shares.facebook | shortNumber}}"><i class="fa fa-facebook"></i></a></li>
-                <li class="share-tw"><a href="#" data-tooltip="{{shares.twitter | shortNumber}}"><i class="fa fa-twitter"></i></a></li>
-                <li class="share-gp"><a href="#"><i class="fa fa-google-plus"></i></a></li>
-                <li class="share-pi"><a href="#"><i class="fa fa-pinterest"></i></a></li>
-            </ul>
-            <ul class="share-other">
-                <li class="share-in"><a href="#"><i class="fa fa-linkedin"></i></a></li>
-                <li class="share-re"><a href="#"><i class="fa fa-reddit"></i></a></li>
-                <li class="share-tu"><a href="#"><i class="fa fa-tumblr"></i></a></li>
-                <li><a href="#"><i class="fa fa-envelope"></i></a></li>
-            </ul>
-            <a href="#" class="share-more">more</a>
-            <a href="#" class="share-less">less</a>
-        </aside> */}
+
+        </div>
     </div>);
 };
 

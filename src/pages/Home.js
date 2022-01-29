@@ -7,6 +7,7 @@ import HeroSection from '../Component/Hero/HeroSection';
 import Hero2 from '../Component/Hero2/Hero2';
 import Navbar from '../Component/Navbar';
 import { carousalpost, randompost } from '../Component/Postcount/PostLogic';
+import SocialShare from '../Component/Social share/SocialShare';
 
 
 
@@ -27,11 +28,15 @@ const Home = () => {
     return (
         <>
             <Navbar />
-            {/* <HeroSection posts={{
-                data: carousal,
-                error: error,
-                isLoading: isLoading,
-            }} /> */}
+            <SocialShare
+                shareparam={{
+                    title: "",
+                    description: "",
+                    image_lg: "",
+                    image: ""
+
+                }}
+            />
             <Hero2 posts={{
                 data: data,
                 error: error,

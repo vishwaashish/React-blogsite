@@ -1,7 +1,14 @@
 {
-  "name": "blogsite",
+  "name": "technotaught",
   "version": "0.1.0",
   "homepage": "https://vishwaashish.github.io/React-blogsite/",
+  "description": "Technotaught is a dummy site just for knowledge purposes created by Ashishkumar Vishwakarma. If you have any questions or suggestions about a look, feel, or anything. Please let us know.",
+  "main": "index.js",
+  "author": "Ashishkumar Vishwakarma",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/vishwaashish/React-blogsite"
+  },
   "private": true,
   "dependencies": {
     "@fortawesome/fontawesome-free": "^5.15.4",
@@ -14,10 +21,12 @@
     "react": "^17.0.2",
     "react-content-loader": "^6.1.0",
     "react-dom": "^17.0.2",
+    "react-helmet": "^6.1.0",
     "react-query": "^3.34.8",
     "react-redux": "^7.2.6",
     "react-router-dom": "^6.2.1",
     "react-scripts": "5.0.0",
+    "react-share": "^4.4.0",
     "redux": "^4.1.2",
     "styled-components": "^5.3.3",
     "web-vitals": "^2.1.3"

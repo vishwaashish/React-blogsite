@@ -5,13 +5,15 @@ const Footer = () => {
     const ScrollUp = () => {
         window.scrollTo(0, 0);
     }
+    const currenthref = window.location.href
     return (
         <>
             <div className="footers" id="footer">
                 <div className="footer-1">
                     <div className="footer-1-1">
-                        <h2 className="abouttitle"><NavLink to="/" onClick={ScrollUp}>Blogify</NavLink></h2>
-                        <p className='aboutdescription'>In Blogify you can find a post like Linux, Windows, Android, mobile phones, games, google products, apps, etc. The main motto of this website is to spread more and more knowledge related to technology.</p>
+                        <h2 className="abouttitle"><NavLink to="/" onClick={ScrollUp}>Technotaught</NavLink></h2>
+                        <p className='aboutdescription'>Technotaught is a dummy site just for knowledge purposes created by <a href='https://github.com/vishwaashish' target="_blank">Ashishkumar Vishwakarma</a>. If you have any questions or suggestions about a look, feel, or anything. Please let us know.</p>
+                        <p>Email:- <a href='mailto:vishwakarmaashish165@gmail.com'>vishwakarmaashish165@gmail.com</a></p>
                     </div>
                     <div className="footer-1-2">
                         <h4>Help</h4>
@@ -38,11 +40,11 @@ const Footer = () => {
                     </div>
                     <div className="footer-2-2">
                         <ul>
-                            <li><a href="/" target="_blank"><i className='fab fa-facebook' /></a></li>
-                            <li><a href="/" target="_blank"><i className='fab fa-instagram' /></a></li>
-                            <li><a href="/" target="_blank"><i className='fab fa-youtube' /></a></li>
-                            <li><a href="/" target="_blank"><i className='fab fa-whatsapp' /></a></li>
-                            <li><a href="mailto:vishwakarmaashish165@gmail.com"><i className='fas fa-envelope' /></a></li>
+                            <li><a href={`https://www.facebook.com/sharer/sharer.php?u=${currenthref}`} target="_blank"><i className='fab fa-facebook' /></a></li>
+                            <li><a href={`http://twitter.com/share?url=${currenthref}`}><i className='fab fa-twitter' /></a></li>
+                            <li><a href={`"https://www.pinterest.com/pin/create/button/?url=${currenthref}`} target="_blank"><i className='fab fa-pinterest' /></a></li>
+                            <li><a href={`https://wa.me/?text=${currenthref}`} target="_blank"><i className='fab fa-whatsapp' /></a></li>
+                            <li><a href={`mailto:vishwakarmaashish165@gmail.com?subject=${currenthref}&amp;body=${currenthref}`} target="_blank"><i className='fas fa-envelope' /></a></li>
                         </ul>
                     </div>
                 </div>

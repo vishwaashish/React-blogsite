@@ -216,6 +216,18 @@ button.btn-sm {
   color: #ffa930 !important;
 }
 
+.fa-twitter:hover {
+  color: #1da1f2 !important;
+}
+
+.fa-rss:hover {
+  color: #7e49f2 !important;
+}
+
+.fa-pinterest:hover {
+  color: #bd081c !important;
+}
+
 .spinner {
   -webkit-animation: rotate 2s linear infinite;
           animation: rotate 2s linear infinite;
@@ -1065,8 +1077,10 @@ nav .close .path {
 
 .card:hover .imageoveray img {
   cursor: pointer;
-  opacity: 0.7;
+  opacity: 0.9;
   background-color: #7e49f2;
+  -o-object-fit: fill;
+     object-fit: fill;
   -webkit-transition: all 0.5s ease-in-out;
   transition: all 0.5s ease-in-out;
 }
@@ -1521,202 +1535,87 @@ nav .close .path {
   }
 }
 
-.share {
-  width: 32px;
-  height: 144px;
-  padding: 5px;
-  margin: 0;
-  color: #444;
-  border-radius: 0 8px 8px 0;
-  border: 1px solid #ccc;
-  border-left-width: 0;
-  -webkit-box-shadow: 0px 0px 10px #ccc;
-          box-shadow: 0px 0px 10px #ccc;
+.open-social-share {
+  -webkit-transform: translateX(0rem) !important;
+          transform: translateX(0rem) !important;
+}
+
+.fixed-social-share {
+  -webkit-transform: translateX(-10rem);
+          transform: translateX(-10rem);
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  background-color: var(--box-background-color);
+  -webkit-box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15) !important;
+          box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15) !important;
   position: fixed;
-  top: calc(50% - 75px);
-  left: 0px;
-  z-index: 295;
+  left: 0;
+  top: 40%;
+  padding-top: calc(1px + 0.3vw);
+  padding-bottom: calc(1px + 0.3vw);
+  padding-left: 0.5rem;
+  border-top-right-radius: 0.5rem;
+  border-bottom-right-radius: 0.5rem;
+  -webkit-transition: 0.5s ease-in-out;
+  transition: 0.5s ease-in-out;
 }
 
-.share.expanded {
-  width: 64px;
+.fixed-social-share .fl-fl:hover {
+  -webkit-transform: scale(1.2);
+          transform: scale(1.2);
+  -webkit-transition: 0.3s ease-in-out;
+  transition: 0.3s ease-in-out;
 }
 
-.share.expanded ul.share-other,
-.share.expanded .share-less {
-  display: block;
-}
-
-.share.expanded .share-more {
-  display: none;
-}
-
-.share ul {
-  padding: 0;
-  margin: 0;
-  display: block;
-  float: left;
-}
-
-.share ul.share-other {
-  display: none;
-}
-
-.share ul li {
-  width: 32px;
-  height: 32px;
-  line-height: 32px;
-  border-radius: 16px;
-  font-size: 22px;
-  text-align: center;
-  display: block;
-  list-style-type: none;
-  cursor: pointer;
-  -webkit-transition: all 0.25s linear;
-  transition: all 0.25s linear;
-  z-index: 310;
-}
-
-.share ul li:hover {
-  background: #aaa;
-}
-
-.share ul li a {
-  color: #aaa;
-}
-
-.share ul li.share-fb:hover {
-  background: #3b5999;
-}
-
-.share ul li.share-fb a {
-  color: #3b5999;
-}
-
-.share ul li.share-tw:hover {
-  background: #55acee;
-}
-
-.share ul li.share-tw a {
-  color: #55acee;
-}
-
-.share ul li.share-gp:hover {
-  background: #df4a32;
-}
-
-.share ul li.share-gp a {
-  color: #df4a32;
-}
-
-.share ul li.share-pi:hover {
-  background: #cc2127;
-}
-
-.share ul li.share-pi a {
-  color: #cc2127;
-}
-
-.share ul li.share-re:hover {
-  background: #336699;
-}
-
-.share ul li.share-re a {
-  color: #336699;
-}
-
-.share ul li.share-tu:hover {
-  background: #35465c;
-}
-
-.share ul li.share-tu a {
-  color: #35465c;
-}
-
-.share ul li.share-in:hover {
-  background: #007bb6;
-}
-
-.share ul li.share-in a {
-  color: #007bb6;
-}
-
-.share ul li a {
-  display: block;
-}
-
-.share ul li a:hover {
+.fixed-social-share .toggle-icon {
+  background-color: #7e49f2;
+  border-radius: 0.5rem;
+  padding: calc(0px + 0.3vw) calc(0px + 0.3vw);
+  font-size: 20px;
   color: white;
+  right: 0;
+  margin: 0rem calc(5px + 0.3vw);
+  cursor: pointer;
 }
 
-.share .share-more,
-.share .share-less {
-  width: 32px;
-  height: 16px;
-  line-height: 16px;
-  color: #555;
-  font-family: sans-serif;
-  font-size: 9px;
-  text-decoration: none;
-  text-align: center;
-  display: block;
+.fixed-social-share .rotate-left {
+  -webkit-transition: 0.5s ease-in-out;
+  transition: 0.5s ease-in-out;
+  -webkit-transform: rotate(180deg);
+          transform: rotate(180deg);
 }
 
-.share .share-less {
-  display: none;
+.fixed-social-share .rotate-right {
+  -webkit-transition: 0.5s ease-in-out;
+  transition: 0.5s ease-in-out;
+  -webkit-transform: rotate(0deg);
+          transform: rotate(0deg);
 }
 
-body {
-  font-family: sans-serif;
+.fixed-social-share .fa,
+.fixed-social-share .fab, .fixed-social-share .fas {
+  font-size: calc(0.8rem + 0.6vw);
+  color: var(--color);
+  right: 0;
+  padding: 0.5rem;
 }
 
-[data-tooltip] {
-  position: relative;
+.fixed-social-share .icon {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
 }
 
-[data-tooltip]:before, [data-tooltip]:after {
-  visibility: hidden;
-  opacity: 0;
-  -webkit-transition: opacity 0.2s linear, visibility 0.2s linear, -webkit-transform 0.2s linear;
-  transition: opacity 0.2s linear, visibility 0.2s linear, -webkit-transform 0.2s linear;
-  transition: opacity 0.2s linear, visibility 0.2s linear, transform 0.2s linear;
-  transition: opacity 0.2s linear, visibility 0.2s linear, transform 0.2s linear, -webkit-transform 0.2s linear;
-  -webkit-transform: translate3d(0, 0, 0);
-          transform: translate3d(0, 0, 0);
-  position: absolute;
-  bottom: 50%;
-  left: 100%;
-  pointer-events: none;
-}
-
-[data-tooltip]:before {
-  content: "";
-  margin: 0 0 0 -12px;
-  background: transparent;
-  border: 6px solid transparent;
-  border-right-color: #ccc;
-  top: calc(50% - 6px);
-  z-index: 1001;
-}
-
-[data-tooltip]:after {
-  content: attr(data-tooltip);
-  height: 30px;
-  line-height: 30px;
-  padding: 0 8px;
-  margin: 0 0 -16px 0;
-  color: #444;
-  background-color: #fff;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  font-size: 14px;
-  z-index: 1000;
-}
-
-[data-tooltip]:hover:before, [data-tooltip]:hover:after, [data-tooltip]:focus:before, [data-tooltip]:focus:after {
-  visibility: visible;
-  opacity: 1;
-  -webkit-transform: translateX(12px);
-          transform: translateX(12px);
+@media screen and (min-width: 680px) {
+  .fixed-social-share {
+    -webkit-transform: translateX(-12rem);
+            transform: translateX(-12rem);
+    left: 0;
+    top: 40%;
+  }
 }
 /*# sourceMappingURL=style.css.map */

@@ -190,6 +190,21 @@ button.btn-sm {
     color: $mail !important;
   }
 }
+.fa-twitter {
+  &:hover {
+    color: $twitter !important;
+  }
+}
+.fa-rss {
+  &:hover {
+    color: $rss !important;
+  }
+}
+.fa-pinterest{
+  &:hover{
+    color : $pinterest !important;
+  }
+}
 // spinner
 .spinner {
   animation: rotate 2s linear infinite;

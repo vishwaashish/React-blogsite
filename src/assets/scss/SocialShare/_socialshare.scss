@@ -1,264 +1,68 @@
-// .float-sm {
-//   .fl-fl {
-//     background: #000000;
-//     text-transform: uppercase;
-//     letter-spacing: 3px;
-//     padding: 4px;
-//     // width: 180px;
-//     position: fixed;
-//     // left: -136px;
-//     z-index: 1000;
-//     font: normal normal 10px Arial;
-//     -webkit-transition: all 0.25s ease;
-//     -moz-transition: all 0.25s ease;
-//     -ms-transition: all 0.25s ease;
-//     -o-transition: all 0.25s ease;
-//     transition: all 0.25s ease;
-//     text-align: right;
-//   }
+@import "../variables";
+.open-social-share {
+  transform: translateX(0rem) !important;
+}
 
-//   .fa,
-//   .fab {
-//     font-size: 20px;
-//     color: #fff;
-//     padding: 10px 0;
-//     width: 40px;
-//     margin-left: 8px;
-//     right: 0;
-//   }
-
-//   .fl-fl:hover {
-//     left: 0;
-//   }
-
-//   .fl-fl a {
-//     color: #fff !important;
-//     text-decoration: none;
-//     text-align: center;
-//     line-height: 43px !important;
-//     vertical-align: top !important;
-//   }
-
-//   .float-fb {
-//     top: 160px;
-//   }
-
-//   .float-tw {
-//     top: 215px;
-//   }
-
-//   .float-gp {
-//     top: 270px;
-//   }
-
-//   .float-rs {
-//     top: 325px;
-//   }
-
-//   .float-ig {
-//     top: 380px;
-//   }
-
-//   .float-pn {
-//     top: 435px;
-//   }
-//   /* Floating Social Media Bar Style Ends Here */
-// }
-
-$facebook: #3b5999;
-$twitter: #55acee;
-$google-plus: #df4a32;
-$pinterest: #cc2127;
-$reddit: #336699; //#cee3f8, #ff4500
-$tumblr: #35465c;
-$linkedin: #007bb6;
-
-$digg: #000000;
-$stumbleupon: #eb4924;
-$dribbble: #ea4c89;
-$instagram: #3f729b;
-$delicious: #3399ff;
-$youtube: #cd201f;
-
-.share {
-  width: 32px;
-  height: 144px;
-  padding: 5px;
-  margin: 0;
-  color: #444;
-  border-radius: 0 8px 8px 0;
-  border: 1px solid #ccc;
-  border-left-width: 0;
-  box-shadow: 0px 0px 10px #ccc;
+.fixed-social-share {
+  transform: translateX(-10rem);
+  display: flex;
+  align-items: center;
+  background-color: var(--box-background-color);
+  box-shadow: 0 0.5rem 1rem hsla(0, 0%, 0%, 0.15) !important;
   position: fixed;
-  top: calc(50% - 75px);
-  left: 0px;
-  z-index: 295;
-  &.expanded {
-    width: 64px;
-    ul.share-other,
-    .share-less {
-      display: block;
-    }
-    .share-more {
-      display: none;
-    }
-  }
-  ul {
-    padding: 0;
-    margin: 0;
-    display: block;
-    float: left;
-    &.share-other {
-      display: none;
-    }
-    li {
-      width: 32px;
-      height: 32px;
-      line-height: 32px;
-      border-radius: 16px;
-      font-size: 22px;
-      text-align: center;
-      display: block;
-      list-style-type: none;
-      cursor: pointer;
-      transition: all 0.25s linear;
-      z-index: 310;
-      &:hover {
-        background: #aaa;
-      }
-      a {
-        color: #aaa;
-      }
-      &.share-fb {
-        &:hover {
-          background: $facebook;
-        }
-        a {
-          color: $facebook;
-        }
-      }
-      &.share-tw {
-        &:hover {
-          background: $twitter;
-        }
-        a {
-          color: $twitter;
-        }
-      }
-      &.share-gp {
-        &:hover {
-          background: $google-plus;
-        }
-        a {
-          color: $google-plus;
-        }
-      }
-      &.share-pi {
-        &:hover {
-          background: $pinterest;
-        }
-        a {
-          color: $pinterest;
-        }
-      }
-      &.share-re {
-        &:hover {
-          background: $reddit;
-        }
-        a {
-          color: $reddit;
-        }
-      }
-      &.share-tu {
-        &:hover {
-          background: $tumblr;
-        }
-        a {
-          color: $tumblr;
-        }
-      }
-      &.share-in {
-        &:hover {
-          background: $linkedin;
-        }
-        a {
-          color: $linkedin;
-        }
-      }
+  left: 0;
+  top: 40%;
+  padding-top: calc(1px + 0.3vw);
+  padding-bottom: calc(1px + 0.3vw);
+  padding-left: 0.5rem;
+  border-top-right-radius: 0.5rem;
+  border-bottom-right-radius: 0.5rem;
+  transition: 0.5s ease-in-out;
 
-      a {
-        display: block;
-        &:hover {
-          color: white;
-        }
-      }
+  .fl-fl {
+    &:hover {
+      transform: scale(1.2);
+      transition: 0.3s ease-in-out;
     }
   }
-  .share-more,
-  .share-less {
-    width: 32px;
-    height: 16px;
-    line-height: 16px;
-    color: #555;
-    font-family: sans-serif;
-    font-size: 9px;
-    text-decoration: none;
-    text-align: center;
-    display: block;
+
+  .toggle-icon {
+    background-color: $primary;
+    border-radius: 0.5rem;
+    padding: calc(0px + 0.3vw) calc(0px + 0.3vw);
+    font-size: 20px;
+    color: white;
+    right: 0;
+    margin: 0rem calc(5px + 0.3vw);
+    cursor: pointer;
   }
-  .share-less {
-    display: none;
+
+  .rotate-left {
+    transition: 0.5s ease-in-out;
+    transform: rotate(180deg);
+  }
+  .rotate-right {
+    transition: 0.5s ease-in-out;
+    transform: rotate(0deg);
+  }
+
+  .fa,
+  .fab, .fas {
+    font-size: calc(0.8rem + 0.6vw);
+    color: var(--color);
+    right: 0;
+    padding: 0.5rem;
+  }
+
+  .icon {
+    display: flex;
   }
 }
 
-body {
-  font-family: sans-serif;
-}
-
-[data-tooltip] {
-  position: relative;
-  &:before,
-  &:after {
-    visibility: hidden;
-    opacity: 0;
-    transition: opacity 0.2s linear, visibility 0.2s linear,
-      transform 0.2s linear;
-    transform: translate3d(0, 0, 0);
-    position: absolute;
-    bottom: 50%;
-    left: 100%;
-    pointer-events: none;
-  }
-  &:before {
-    content: "";
-    margin: 0 0 0 -12px;
-    background: transparent;
-    border: 6px solid transparent;
-    border-right-color: #ccc;
-    top: calc(50% - 6px);
-    z-index: 1001;
-  }
-  &:after {
-    content: attr(data-tooltip);
-    height: 30px;
-    line-height: 30px;
-    padding: 0 8px;
-    margin: 0 0 -16px 0;
-    color: #444;
-    background-color: #fff;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    font-size: 14px;
-    z-index: 1000;
-  }
-  &:hover,
-  &:focus {
-    &:before,
-    &:after {
-      visibility: visible;
-      opacity: 1;
-      transform: translateX(12px);
-    }
+@media screen and (min-width: $breakdown-md) {
+  .fixed-social-share {
+    transform: translateX(-12rem);
+    left: 0;
+    top: 40%;
   }
 }

@@ -7,8 +7,11 @@ import { jsondata } from '../../Api/data';
 import Footer from '../../Component/Footer/Footer';
 import Navbar from '../../Component/Navbar';
 import SocialShare from '../../Component/Social share/SocialShare';
-const SinglePostPage = (prop) => {
+import { Helmet } from "react-helmet";
+
+const SinglePostPage = (props) => {
   const navigate = useNavigate()
+  const currenthref = window.location.href
   const param = useParams()
   const { data, isLoading } = useQuery(['singlepost', param], async () => {
     try {
@@ -28,20 +31,33 @@ const SinglePostPage = (prop) => {
       </svg>
     </div >
   )
+  const Seo = () => (
+    <>
+      {
+        !isLoading && <>
+          <Helmet>
+            <meta property="og:title" content={data?.title ?? jsondata[9].title} />
+            <meta property="og:type" content={data?.title ?? jsondata[9].title} />
+            <meta property="og:image" content={data?.title ?? jsondata[9].title} />
+            <meta property="og:url" content={currenthref} />
+            <meta name="twitter:card" content={data?.image_lg ?? jsondata[9].image_lg} />
+            <meta property="og:description" content={data?.description.length ?? jsondata[9].title.length > 150 ? data?.description.substring(0, 150) ?? jsondata.description.substring(0, 150) : data.description ?? jsondata.description} />
+            <meta property="og:site_name" content="Technotaught" />
+            <meta name="twitter:image:alt" content={data?.title ?? jsondata[9].title} />
+
+            <title>{data?.title ?? jsondata[9].title}</title>
+            <meta name="description" content={data?.description.length ?? jsondata[9].title.length > 150 ? data?.description.substring(0, 150) ?? jsondata.description.substring(0, 150) : data.description ?? jsondata.description} />
+          </Helmet>
+        </>
+      }
+    </>
+  )
+
   return (<>
     <Navbar />
+    <Seo />
     <SocialShare
-
-      shareparam={
-        {
-          facebook: "facebook",
-          instagram: "instagram",
-          youtube: "youtube",
-          whatsapp: "whatsapp",
-          envelope: "envelope",
-        }
-      }
-
+      shareparam={data ?? jsondata[9]}
     />
     <div className="singlepage">
       <div className="singlepage-image">
@@ -63,14 +79,15 @@ const SinglePostPage = (prop) => {
               </div>
               <div className="description" dangerouslySetInnerHTML={{ __html: data?.description ?? jsondata[9].description }}>
               </div>
+
               <div className='social-share'>
                 <p>Share on</p>
                 <ul>
-                  <li><a href="#"><i className='fab fa-facebook' /></a></li>
-                  <li><a href="#"><i className='fab fa-instagram' /></a></li>
-                  <li><a href="#"><i className='fab fa-youtube' /></a></li>
-                  <li><a href="#"><i className='fab fa-whatsapp' /></a></li>
-                  <li><a href="#"><i className='fas fa-envelope' /></a></li>
+                  <li><a href={`https://www.facebook.com/sharer/sharer.php?u=${currenthref}&quote=${data.title}`} target="_blank"><i className='fab fa-facebook' /></a></li>
+                  <li><a href={`http://twitter.com/share?text=${data.title}&url=${currenthref}`}><i className='fab fa-twitter' /></a></li>
+                  <li><a href={`"https://www.pinterest.com/pin/create/button/?url=${currenthref}&media=${data.image_lg}&description=${data.description}`} target="_blank"><i className='fab fa-pinterest' /></a></li>
+                  <li><a href={`https://wa.me/?text=${currenthref}`} target="_blank"><i className='fab fa-whatsapp' /></a></li>
+                  <li><a href={`mailto:?subject=${data.title}&amp;body=${currenthref}`} target="_blank"><i className='fas fa-envelope' /></a></li>
                 </ul>
               </div>
               <div className="related-post">

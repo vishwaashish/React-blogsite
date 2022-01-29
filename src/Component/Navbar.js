@@ -18,9 +18,6 @@ const Navbar = () => {
 
     const pathname = history.pathname === "/" || history.pathname === "/home"
 
-
-
-
     useEffect(() => {
         const root = document.documentElement;
         root?.style.setProperty(
@@ -83,7 +80,7 @@ const Navbar = () => {
         <div className="wrapper">
             {togglesearch && <ModalSearch toggle={setTogglesearch} isOpen={togglesearch} />}
             <header ref={headerhide} style={StyleHader}>
-                <NavLink style={pathname ? HyperLink : {}} to="/" className="logo" >Blogify</NavLink>
+                <NavLink style={pathname ? HyperLink : {}} to="/" className="logo" >Technotaught</NavLink>
                 <div style={{ display: 'flex' }}>
                     <nav className={!navtoggle ? 'open-nav' : ""}>
                         <svg className="close" onClick={() => setNavToggle(navtoggle => !navtoggle)} viewBox="0 0 24 24" fill="black" >
