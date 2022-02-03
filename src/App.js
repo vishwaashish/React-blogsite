@@ -2,24 +2,27 @@
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import './assets/scss/style.css'
 import { HashRouter, Route, Routes, } from "react-router-dom";
-import SinglePostPage from "./pages/Post/SinglePostPage";
-import Home from "./pages/Home";
-import Blog from "./pages/Post/Blog";
+import React, { Suspense } from "react";
+import Loader from "./Component/Loader/Loader";
+
+const Blog = React.lazy(() => import('./pages/Post/Blog'));
+const Home = React.lazy(() => import('./pages/Home'));
+const SinglePostPage = React.lazy(() => import('./pages/Post/SinglePostPage'))
 
 function App() {
   return (
     <div className="App ">
-      <HashRouter>
-        <Routes>
-          <Route path="/" element={<Home />} />
-          {/* <Route exact path="/page" component={HashLinkPage} />/ */}
-          {/* <Route path="#footer" element={<Home />} /> */}
-          <Route path="/blog" element={<Blog />} />
-          <Route path="/post/:id" element={<SinglePostPage />} />
-          <Route path="/post" element={<SinglePostPage />} />
-          <Route path="*" element={<Home />} />
-        </Routes>
-      </HashRouter>
+      <Suspense fallback={<Loader h="100vh" />}>
+        <HashRouter>
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/blog" element={<Blog />} />
+            <Route path="/post/:id" element={<SinglePostPage />} />
+            <Route path="/post" element={<SinglePostPage />} />
+            <Route path="*" element={<Home />} />
+          </Routes>
+        </HashRouter>
+      </Suspense>
 
     </div>
   );

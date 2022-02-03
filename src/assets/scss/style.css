@@ -256,6 +256,20 @@ button.btn-sm {
           animation: dash 1.5s ease-in-out infinite;
 }
 
+.loader {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  margin: auto;
+}
+
+.loader img {
+  width: 4em;
+}
+
 @-webkit-keyframes rotate {
   100% {
     -webkit-transform: rotate(360deg);

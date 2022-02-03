@@ -1,5 +1,5 @@
 import moment from 'moment';
-import React from 'react';
+import React, { Suspense } from 'react';
 import { useQuery } from 'react-query';
 import { useLocation, useNavigate, useParams } from 'react-router-dom';
 import { Callgetapibyid } from '../../Api/CallApi';
@@ -8,6 +8,7 @@ import Footer from '../../Component/Footer/Footer';
 import Navbar from '../../Component/Navbar';
 import SocialShare from '../../Component/Social share/SocialShare';
 import { Helmet } from "react-helmet";
+import Loader from '../../Component/Loader/Loader';
 
 const SinglePostPage = (props) => {
   const navigate = useNavigate()
@@ -59,49 +60,51 @@ const SinglePostPage = (props) => {
     <SocialShare
       shareparam={data ?? jsondata[9]}
     />
-    <div className="singlepage">
-      <div className="singlepage-image">
-      </div>
-      <div className="singlepage-box shadow">
-        <div className="singlepage-content">
-          {
-            !isLoading ? <>
-              <i className='fa fa-arrow-alt-circle-left' onClick={() => navigate(-1)} />
-              <div className='date'>{moment().format('LL')}</div>
-              <h1>{data?.title ?? jsondata[9].title}</h1>
-              <div className="break-line">
-                <svg >
-                  <path d="M 10 10 L 300 10" />
-                </svg>
-              </div>
-              <div className="image">
-                {<img src={data?.image_lg ?? jsondata[9].image_lg} loading="lazy" alt={data?.title ?? jsondata[9].title} />}
-              </div>
-              <div className="description" dangerouslySetInnerHTML={{ __html: data?.description ?? jsondata[9].description }}>
-              </div>
+    <Suspense fallback={<Loader h="100vh" />}>
+      <div className="singlepage">
+        <div className="singlepage-image">
+        </div>
+        <div className="singlepage-box shadow">
+          <div className="singlepage-content">
+            {
+              !isLoading ? <>
+                <i className='fa fa-arrow-alt-circle-left' onClick={() => navigate(-1)} />
+                <div className='date'>{moment().format('LL')}</div>
+                <h1>{data?.title ?? jsondata[9].title}</h1>
+                <div className="break-line">
+                  <svg >
+                    <path d="M 10 10 L 300 10" />
+                  </svg>
+                </div>
+                <div className="image">
+                  {<img src={data?.image_lg ?? jsondata[9].image_lg} loading="lazy" alt={data?.title ?? jsondata[9].title} />}
+                </div>
+                <div className="description" dangerouslySetInnerHTML={{ __html: data?.description ?? jsondata[9].description }}>
+                </div>
 
-              <div className='social-share'>
-                <p>Share on</p>
-                <ul>
-                  <li><a href={`https://www.facebook.com/sharer/sharer.php?u=${currenthref}&quote=${data.title}`} target="_blank"><i className='fab fa-facebook' /></a></li>
-                  <li><a href={`http://twitter.com/share?text=${data.title}&url=${currenthref}`}><i className='fab fa-twitter' /></a></li>
-                  <li><a href={`"https://www.pinterest.com/pin/create/button/?url=${currenthref}&media=${data.image_lg}&description=${data.description}`} target="_blank"><i className='fab fa-pinterest' /></a></li>
-                  <li><a href={`https://wa.me/?text=${currenthref}`} target="_blank"><i className='fab fa-whatsapp' /></a></li>
-                  <li><a href={`mailto:?subject=${data.title}&amp;body=${currenthref}`} target="_blank"><i className='fas fa-envelope' /></a></li>
-                </ul>
-              </div>
-              <div className="related-post">
-              </div>
+                <div className='social-share'>
+                  <p>Share on</p>
+                  <ul>
+                    <li><a href={`https://www.facebook.com/sharer/sharer.php?u=${currenthref}&quote=${data.title ?? jsondata[9].title}`} target="_blank"><i className='fab fa-facebook' /></a></li>
+                    <li><a href={`http://twitter.com/share?text=${data.title ?? jsondata[9].title}&url=${currenthref}`}><i className='fab fa-twitter' /></a></li>
+                    <li><a href={`"https://www.pinterest.com/pin/create/button/?url=${currenthref}&media=${data.image_lg ?? jsondata[9].image_lg}&description=${data.description ?? jsondata[9].description}`} target="_blank"><i className='fab fa-pinterest' /></a></li>
+                    <li><a href={`https://wa.me/?text=${currenthref}`} target="_blank"><i className='fab fa-whatsapp' /></a></li>
+                    <li><a href={`mailto:?subject=${data.title ?? jsondata[9].title}&amp;body=${currenthref}`} target="_blank"><i className='fas fa-envelope' /></a></li>
+                  </ul>
+                </div>
+                <div className="related-post">
+                </div>
 
-              <div className="related-post">
-              </div>
-            </>
-              : <Spinner />
-          }
+                <div className="related-post">
+                </div>
+              </>
+                : <Spinner />
+            }
 
+          </div>
         </div>
       </div>
-    </div>
+    </Suspense>
     <Footer />
   </>
   );

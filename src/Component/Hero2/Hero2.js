@@ -26,7 +26,7 @@ const Hero2 = (props) => {
             {
                 isLoading ? <Spinner /> : <>
                     <Hero1
-                        randomarticle1={randomarticle1}
+                        randomarticle1={randomarticle1 ?? (data && data[8])}
                         data={data && data[8]}
                     />
                     <div className="section-2" id="section2" ref={scroll1}>
