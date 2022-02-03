@@ -2,11 +2,12 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { NavLink, useLocation } from 'react-router-dom';
+import { HashLink } from 'react-router-hash-link';
 import { DARKMODE, LIGHTMODE } from '../Redux/action/action';
 import ModalSearch from './Modal/ModalSearch';
 
 const Navbar = () => {
-    const [navtoggle, setNavToggle] = React.useState(false)
+    const [navtoggle, setNavToggle] = React.useState(true)
     const [togglesearch, setTogglesearch] = React.useState(false)
 
     const toggle = useSelector(state => state.Darkmode)
@@ -70,15 +71,18 @@ const Navbar = () => {
             dispatch(LIGHTMODE())
         }
     }
+
     const ToggleSearch = () => {
         setTogglesearch(togglesearch => !togglesearch)
+    }
+    const NavToggle = () => {
+        setNavToggle(navtoggle => !navtoggle)
     }
 
     const StyleHader = {
         position: pathname ? 'absolute' : 'relative',
         width: '100%',
         boxShadow: pathname ? 'unset' : '0 0.125rem 0.25rem rgba(0, 0, 0, 0.075)',
-        // color: 'white'
     }
     const HyperLink = {
         color: 'white',
@@ -95,9 +99,9 @@ const Navbar = () => {
                             />
                         </svg>
                         <ul >
-                            <li><NavLink to="/" href="#" className={pathname ? "a_header" : ""}>Home</NavLink></li>
-                            <li><NavLink to="/blog" href="#" className={pathname ? "a_header" : ""}>Blog</NavLink></li>
-                            {/* <li><NavLink to="footer" href="#" className={pathname ? "a_header" : ""}>Contact us</NavLink></li> */}
+                            <li><NavLink to="/" href="#" className={pathname ? "a_header" : ""} onClick={NavToggle}>Home</NavLink></li>
+                            <li><NavLink to="/blog" href="#" className={pathname ? "a_header" : ""} onClick={NavToggle}>Blog</NavLink></li>
+                            <li><HashLink smooth to={'#footer'} className={pathname ? "a_header" : ""} onClick={NavToggle}>Contact us</HashLink></li>
                         </ul>
                     </nav>
                     <div className='togglemode'>

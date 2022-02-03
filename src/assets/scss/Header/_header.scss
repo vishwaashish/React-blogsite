@@ -2,8 +2,6 @@
 @import "../variables";
 
 header {
-  // box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
-  // box-shadow: 0 1rem 1rem 1rem black;
   display: flex;
   transform-origin: left;
   justify-content: space-between;
@@ -99,11 +97,6 @@ nav {
   right: 0;
   height: 100vh;
   background-color: var(--box-background-color-shade);
-  // background-image: linear-gradient(
-  //   180deg,
-  //   var(--box-background-color-shade),
-  //   var(--background-color)
-  // );
   z-index: 999;
   width: 50%;
   transform: translateX(100%);
@@ -174,17 +167,13 @@ nav {
     svg.close {
       display: none;
     }
-
     ul {
       display: flex;
       margin: 0;
-
       li {
         padding: 0rem 0.5rem;
       }
-
       a {
-        // color: var(--color);
         padding: 0.5em 0.5em;
         font-size: 0.9rem;
         font-weight: 400;
@@ -231,7 +220,6 @@ nav {
 
 @keyframes navmenu {
   from {
-    // transform: rotate(-20deg);
     transform: scale(1);
   }
   to {
