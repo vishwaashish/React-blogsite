@@ -2,12 +2,12 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { NavLink, useLocation } from 'react-router-dom';
-import { DARKMODE } from '../Redux/action/action';
+import { DARKMODE, LIGHTMODE } from '../Redux/action/action';
 import ModalSearch from './Modal/ModalSearch';
 import styled from 'styled-components';
 
 const Navbar = () => {
-    const [navtoggle, setNavToggle] = React.useState(true)
+    const [navtoggle, setNavToggle] = React.useState(false)
     const [togglesearch, setTogglesearch] = React.useState(false)
 
     const toggle = useSelector(state => state.Darkmode)
@@ -15,11 +15,19 @@ const Navbar = () => {
 
     const history = useLocation()
     const headerhide = React.useRef(null)
-
     const pathname = history.pathname === "/" || history.pathname === "/home"
+    const modes = window.matchMedia('(prefers-color-scheme: dark)').matches
+    React.useEffect(() => {
+        if (modes) {
+            dispatch(DARKMODE())
+        } else {
+            dispatch(LIGHTMODE())
+        }
+    }, [modes])
 
-    useEffect(() => {
+    React.useLayoutEffect(() => {
         const root = document.documentElement;
+
         root?.style.setProperty(
             '--background-color',
             toggle ? "#1c1c27" : "#fff"
@@ -60,7 +68,7 @@ const Navbar = () => {
         if (checked) {
             dispatch(DARKMODE())
         } else {
-            dispatch(DARKMODE())
+            dispatch(LIGHTMODE())
         }
     }
     const ToggleSearch = () => {
@@ -94,10 +102,10 @@ const Navbar = () => {
                         </ul>
                     </nav>
                     <div className='togglemode'>
-                        <input type="checkbox" className="toggleinput" id="checkbox" onChange={Togglefuc} />
+                        <input type="checkbox" className="toggleinput" id="checkbox" checked={toggle} onChange={Togglefuc} />
                         <label htmlFor="checkbox" className="label">
-                            <span className='toggle-sun'>🌞</span>
                             <span className="toggle-moon">🌜</span>
+                            <span className='toggle-sun'>🌞</span>
                             <div className='ball'></div>
                         </label>
                     </div>

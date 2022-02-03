@@ -3,3 +3,8 @@ export const DARKMODE = () => {
         type: "DARKMODE"
     }
 }
+export const LIGHTMODE = () => {
+    return {
+        type: "LIGHTMODE"
+    }
+}

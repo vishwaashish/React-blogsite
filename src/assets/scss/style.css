@@ -10,6 +10,19 @@
   ---primary: $white;
 }
 
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background-color: #1c1c27;
+    --background-color-shade: #1c1c27;
+    --box-background-color: #28293d;
+    --box-background-color-shade: #28293d;
+    --footer: #28293d;
+    --color: #f6f9fc;
+    --pcolor: #adb5bd;
+    --shadow: #adb5bd;
+  }
+}
+
 * {
   margin: 0;
   -webkit-box-sizing: border-box;
