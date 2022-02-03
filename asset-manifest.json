@@ -1,7 +1,13 @@
 {
   "files": {
-    "main.css": "/React-blogsite/static/css/main.6dea164f.css",
-    "main.js": "/React-blogsite/static/js/main.ce4526cf.js",
+    "main.css": "/React-blogsite/static/css/main.54f9c5f9.css",
+    "main.js": "/React-blogsite/static/js/main.3a2ff572.js",
+    "static/js/146.8227d3e3.chunk.js": "/React-blogsite/static/js/146.8227d3e3.chunk.js",
+    "static/js/498.0601d263.chunk.js": "/React-blogsite/static/js/498.0601d263.chunk.js",
+    "static/js/715.7634b78f.chunk.js": "/React-blogsite/static/js/715.7634b78f.chunk.js",
+    "static/js/445.2b2d9cba.chunk.js": "/React-blogsite/static/js/445.2b2d9cba.chunk.js",
+    "static/js/704.04c476d3.chunk.js": "/React-blogsite/static/js/704.04c476d3.chunk.js",
+    "static/js/639.f662387f.chunk.js": "/React-blogsite/static/js/639.f662387f.chunk.js",
     "static/media/fa-solid-900.svg": "/React-blogsite/static/media/fa-solid-900.7a8b4f130182d19a2d7c.svg",
     "static/media/fa-brands-400.svg": "/React-blogsite/static/media/fa-brands-400.2f517e09eb2ca6650ff5.svg",
     "static/media/8.jpg": "/React-blogsite/static/media/8.58e40e90f067e2972c03.jpg",
@@ -29,12 +35,19 @@
     "static/media/fa-regular-400.ttf": "/React-blogsite/static/media/fa-regular-400.491974d108fe4002b2aa.ttf",
     "static/media/fa-regular-400.woff": "/React-blogsite/static/media/fa-regular-400.bb58e57c48a3e911f15f.woff",
     "static/media/fa-regular-400.woff2": "/React-blogsite/static/media/fa-regular-400.7a3337626410ca2f4071.woff2",
+    "static/media/Loader.svg": "/React-blogsite/static/media/Loader.9f093cbfe642d01e0de0b63927407dda.svg",
     "index.html": "/React-blogsite/index.html",
-    "main.6dea164f.css.map": "/React-blogsite/static/css/main.6dea164f.css.map",
-    "main.ce4526cf.js.map": "/React-blogsite/static/js/main.ce4526cf.js.map"
+    "main.54f9c5f9.css.map": "/React-blogsite/static/css/main.54f9c5f9.css.map",
+    "main.3a2ff572.js.map": "/React-blogsite/static/js/main.3a2ff572.js.map",
+    "146.8227d3e3.chunk.js.map": "/React-blogsite/static/js/146.8227d3e3.chunk.js.map",
+    "498.0601d263.chunk.js.map": "/React-blogsite/static/js/498.0601d263.chunk.js.map",
+    "715.7634b78f.chunk.js.map": "/React-blogsite/static/js/715.7634b78f.chunk.js.map",
+    "445.2b2d9cba.chunk.js.map": "/React-blogsite/static/js/445.2b2d9cba.chunk.js.map",
+    "704.04c476d3.chunk.js.map": "/React-blogsite/static/js/704.04c476d3.chunk.js.map",
+    "639.f662387f.chunk.js.map": "/React-blogsite/static/js/639.f662387f.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.6dea164f.css",
-    "static/js/main.ce4526cf.js"
+    "static/css/main.54f9c5f9.css",
+    "static/js/main.3a2ff572.js"
   ]
 }
