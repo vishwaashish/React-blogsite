@@ -2,13 +2,17 @@ import moment from 'moment';
 import React, { Suspense } from 'react';
 import { useQuery } from 'react-query';
 import { useLocation, useNavigate, useParams } from 'react-router-dom';
-import { Callgetapibyid } from '../../Api/CallApi';
+import { Callgetapi, Callgetapibyid } from '../../Api/CallApi';
 import { jsondata } from '../../Api/data';
 import Footer from '../../Component/Footer/Footer';
 import Navbar from '../../Component/Navbar';
 import SocialShare from '../../Component/Social share/SocialShare';
 import { Helmet } from "react-helmet";
 import Loader from '../../Component/Loader/Loader';
+import { NavLink } from 'react-router-dom';
+import { randompost } from '../../Component/Postcount/PostLogic';
+import CardStyle4_Blog from '../../Component/CardStyle/CardStyle4_Blog';
+import CardStyle3 from '../../Component/CardStyle/CardStyle3';
 
 const SinglePostPage = (props) => {
   const navigate = useNavigate()
@@ -21,6 +25,13 @@ const SinglePostPage = (props) => {
       throw new Error("Error")
     }
   })
+  const { data: rdata, isLoading: rLoading } = useQuery('post', Callgetapi,
+    {
+      keepPreviousData: true,
+      staleTime: Infinity
+    })
+  const randomarticle = randompost(rdata, 3)
+
   React.useEffect(() => {
     window.scrollTo(0, 0);
   }, [param]);
@@ -61,46 +72,53 @@ const SinglePostPage = (props) => {
       shareparam={data ?? jsondata[9]}
     />
     <Suspense fallback={<Loader h="100vh" />}>
-      <div className="singlepage">
-        <div className="singlepage-image">
-        </div>
-        <div className="singlepage-box shadow">
-          <div className="singlepage-content">
-            {
-              !isLoading ? <>
-                <i className='fa fa-arrow-alt-circle-left' onClick={() => navigate(-1)} />
-                <div className='date'>{moment().format('LL')}</div>
-                <h1>{data?.title ?? jsondata[9].title}</h1>
-                <div className="break-line">
-                  <svg >
-                    <path d="M 10 10 L 300 10" />
-                  </svg>
-                </div>
-                <div className="image">
-                  {<img src={data?.image_lg ?? jsondata[9].image_lg} loading="lazy" alt={data?.title ?? jsondata[9].title} />}
-                </div>
-                <div className="description" dangerouslySetInnerHTML={{ __html: data?.description ?? jsondata[9].description }}>
-                </div>
 
-                <div className='social-share'>
-                  <p>Share on</p>
-                  <ul>
-                    <li><a href={`https://www.facebook.com/sharer/sharer.php?u=${currenthref}&quote=${data.title ?? jsondata[9].title}`} target="_blank"><i className='fab fa-facebook' /></a></li>
-                    <li><a href={`http://twitter.com/share?text=${data.title ?? jsondata[9].title}&url=${currenthref}`}><i className='fab fa-twitter' /></a></li>
-                    <li><a href={`"https://www.pinterest.com/pin/create/button/?url=${currenthref}&media=${data.image_lg ?? jsondata[9].image_lg}&description=${data.description ?? jsondata[9].description}`} target="_blank"><i className='fab fa-pinterest' /></a></li>
-                    <li><a href={`https://wa.me/?text=${currenthref}`} target="_blank"><i className='fab fa-whatsapp' /></a></li>
-                    <li><a href={`mailto:?subject=${data.title ?? jsondata[9].title}&amp;body=${currenthref}`} target="_blank"><i className='fas fa-envelope' /></a></li>
-                  </ul>
-                </div>
-                <div className="related-post">
-                </div>
+      <div className='post-page' style={{ backgroundImage: `linear-gradient(to bottom, rgba(0, 0, 0, 0.4), #00000090), url(${data?.image_lg ?? jsondata[9].image_lg})` }}>
+        {/* <img src={data?.image_lg ?? jsondata[9].image_lg} loading="lazy" alt={data?.title ?? jsondata[9].title} /> */}
+        <div className='post-page-box '>
 
-                <div className="related-post">
-                </div>
-              </>
-                : <Spinner />
-            }
+          <div className='breadcrumb'>
+            <NavLink to="/">Home</NavLink> / <NavLink to="/blog">Blog</NavLink> / <span className='active'>{data?.title ?? jsondata[9].title}</span>
+          </div>
+          <h1>{data?.title ?? jsondata[9].title}</h1>
+          <div className='date'>{moment().format('LL')}</div>
+          <div className="break-line">
+            <svg >
+              <path d="M 10 10 L 300 10" />
+            </svg>
+          </div>
+          <div className="image">
+            {<img src={data?.image_lg ?? jsondata[9].image_lg} loading="lazy" alt={data?.title ?? jsondata[9].title} />}
+          </div>
 
+          <div className='post-page-box-1'>
+            <div className='post-page-box-1-1'>
+              <div className="description" dangerouslySetInnerHTML={{ __html: data?.description ?? jsondata[9].description }}>
+              </div>
+              <div className='social-share'>
+                <h4>Share on</h4>
+                <ul>
+                  <li><a href={`https://www.facebook.com/sharer/sharer.php?u=${currenthref}&quote=${data?.title ?? jsondata[9].title}`} target="_blank"><i className='fab fa-facebook' /></a></li>
+                  <li><a href={`http://twitter.com/share?text=${data?.title ?? jsondata[9].title}&url=${currenthref}`}><i className='fab fa-twitter' /></a></li>
+                  <li><a href={`"https://www.pinterest.com/pin/create/button/?url=${currenthref}&media=${data?.image_lg ?? jsondata[9].image_lg}&description=${data?.description ?? jsondata[9].description}`} target="_blank"><i className='fab fa-pinterest' /></a></li>
+                  <li><a href={`https://wa.me/?text=${currenthref}`} target="_blank"><i className='fab fa-whatsapp' /></a></li>
+                  <li><a href={`mailto:?subject=${data?.title ?? jsondata[9].title}&amp;body=${currenthref}`} target="_blank"><i className='fas fa-envelope' /></a></li>
+                </ul>
+              </div>
+            </div>
+            <div className='post-page-box-1-2'>
+
+              <h3>Similar Post</h3>
+              <div className='post-page-box-1-2-1'>
+                {rLoading ? <Spinner /> : randomarticle && randomarticle.map((item, index) => {
+                  return (
+                    <div className="cardStyle" key={index}>
+                      <CardStyle3 posts={item} />
+                    </div>
+                  )
+                })}
+              </div>
+            </div>
           </div>
         </div>
       </div>

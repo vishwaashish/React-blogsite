@@ -101,7 +101,7 @@
   .prev {
     display: inline-flex;
     top: 50%;
-    z-index: 999;
+    z-index: 1;
     left: 20px;
     color: var(--background-color);
   }
@@ -109,7 +109,7 @@
     display: inline-flex;
     top: 50%;
     right: 20px;
-    z-index: 999;
+    z-index: 1;
     color: var(--background-color);
 
   }

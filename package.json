@@ -3,7 +3,6 @@
   "version": "0.1.0",
   "homepage": "https://vishwaashish.github.io/React-blogsite/",
   "description": "Technotaught is a dummy site just for knowledge purposes created by Ashishkumar Vishwakarma. If you have any questions or suggestions about a look, feel, or anything. Please let us know.",
-  "main": "index.js",
   "author": "Ashishkumar Vishwakarma",
   "repository": {
     "type": "git",

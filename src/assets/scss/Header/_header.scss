@@ -1,12 +1,41 @@
 // header
 @import "../variables";
 
+.home-navbar {
+  position: fixed;
+  background-color: var(--background-color);
+  width: 100%;
+  box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+  z-index: 999;
+  transition: all 0.5s linear;
+}
+.home-navbar-expand {
+  position: absolute;
+  background-color: transparent;
+  width: 100%;
+  padding-top: 2rem;
+  transition: all 0.5s linear;
+}
+.navbar-fixed {
+  position: fixed;
+  z-index: 4;
+  width: 100%;
+  background-color: var(--background-color);
+  box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+}
+.navbar-expand {
+  padding: 1em 1em;
+  transition: 0.3s linear;
+}
+.navbar {
+  transition: 0.3s linear;
+}
+
 header {
   display: flex;
   transform-origin: left;
   justify-content: space-between;
-  padding: 1em 1em;
-
+  padding: 0.5em 1em;
   .logo {
     text-decoration: none;
     font-size: 1.2rem;
@@ -96,7 +125,7 @@ nav {
   top: 0;
   right: 0;
   height: 100vh;
-  background-color: var(--box-background-color-shade);
+  background-color: #28293d;
   z-index: 999;
   width: 50%;
   transform: translateX(100%);
@@ -109,15 +138,15 @@ nav {
     margin-top: 5rem;
     a {
       text-decoration: none;
-      color: var(--color);
+      color: white;
       font-size: 1.1rem;
       padding: 0.75rem 2rem;
       display: block;
       &:hover {
-        background-color: $gray-100;
+        background-color: $gray-300;
       }
       &:focus {
-        background-color: $gray-100;
+        background-color: $gray-300;
       }
     }
   }
@@ -142,14 +171,28 @@ nav {
 }
 
 @media only screen and (min-width: 680px) {
-  header {
+  .navbar-expand {
     padding: 1em 4em;
+    transition: 0.3s linear;
+  }
+  header {
+    padding: 0.5em 4em;
     .togglemode {
       padding-left: 1em;
     }
   }
 }
 @media only screen and (min-width: 920px) {
+  .home-navbar-expand {
+    color: white;
+    a {
+      color: white;
+    }
+  }
+  .navbar-expand {
+    padding: 0.5em 8em;
+    transition: 0.3s linear;
+  }
   .menu {
     display: none;
   }
@@ -178,7 +221,7 @@ nav {
         font-size: 0.9rem;
         font-weight: 400;
         position: relative;
-
+        color: var(--color);
         &:after {
           content: "";
           position: absolute;

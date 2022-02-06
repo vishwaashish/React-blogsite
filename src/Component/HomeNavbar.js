@@ -6,7 +6,7 @@ import { HashLink } from 'react-router-hash-link';
 import { DARKMODE, LIGHTMODE } from '../Redux/action/action';
 import ModalSearch from './Modal/ModalSearch';
 
-const Navbar = () => {
+const HomeNavbar = () => {
     const [navtoggle, setNavToggle] = React.useState(true)
     const [togglesearch, setTogglesearch] = React.useState(false)
     const [navbar, setNavbar] = React.useState(false)
@@ -17,6 +17,7 @@ const Navbar = () => {
     const headerhide = React.useRef(null)
     const pathname = history.pathname === "/" || history.pathname === "/home"
     const modes = window.matchMedia('(prefers-color-scheme: dark)').matches
+
     React.useEffect(() => {
         changeBackground()
         window.addEventListener("scroll", changeBackground)
@@ -82,22 +83,29 @@ const Navbar = () => {
     const NavToggle = () => {
         setNavToggle(navtoggle => !navtoggle)
     }
-
     const changeBackground = () => {
-
-        if (window.scrollY >= 66) {
+        if (window.scrollY >= 100) {
             setNavbar(true)
         } else {
             setNavbar(false)
         }
     }
 
-
+    const StyleHader = {
+        position: pathname ? 'absolute' : 'relative',
+        width: '100%',
+        boxShadow: pathname ? 'unset' : '0 0.125rem 0.25rem rgba(0, 0, 0, 0.075)',
+        marginTop: pathname ? '1.5rem' : 'relative',
+        zIndex: 2
+    }
+    const HyperLink = {
+        color: 'white',
+    }
     return (<>
         <div className="wrapper">
             {togglesearch && <ModalSearch toggle={setTogglesearch} isOpen={togglesearch} />}
-            <header ref={headerhide} className={`navbar-fixed  ${!navbar ? 'navbar-expand' : 'navbar'}`} >
-                <NavLink to="/" className="logo" >Technotaught</NavLink>
+            <header ref={headerhide} className={`${!navbar ? 'home-navbar-expand' : 'home-navbar'}`}>
+                <NavLink to="/" className="logo" style={{ color: !navbar && 'white' }} >Technotaught</NavLink>
                 <div style={{ display: 'flex' }}>
                     <nav className={!navtoggle ? 'open-nav' : ""}>
                         <svg className="close" onClick={() => setNavToggle(navtoggle => !navtoggle)} viewBox="0 0 24 24" fill="black" >
@@ -119,7 +127,7 @@ const Navbar = () => {
                         </label>
                     </div>
                     <div className="navbar-search" onClick={ToggleSearch}>
-                        <i className={pathname ? "fa fa-search " : "fa fa-search"} />
+                        <i style={{ color: !navbar && 'white' }} className={pathname ? "fa fa-search " : "fa fa-search"} />
                     </div>
                 </div>
                 <svg className="menu" onClick={() => setNavToggle(navtoggle => !navtoggle)} viewBox="0 0 48 32" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -134,4 +142,4 @@ const Navbar = () => {
     </>);
 };
 
-export default React.memo(Navbar)
+export default React.memo(HomeNavbar)

@@ -4,6 +4,7 @@ import './assets/scss/style.css'
 import { HashRouter, Route, Routes, } from "react-router-dom";
 import React, { Suspense } from "react";
 import Loader from "./Component/Loader/Loader";
+import Scrolltoup from "./Component/Scrolltoup/Scrolltoup";
 
 const Blog = React.lazy(() => import('./pages/Post/Blog'));
 const Home = React.lazy(() => import('./pages/Home'));
@@ -13,6 +14,7 @@ function App() {
   return (
     <div className="App ">
       <Suspense fallback={<Loader h="100vh" />}>
+        <Scrolltoup/>
         <HashRouter>
           <Routes>
             <Route path="/" element={<Home />} />

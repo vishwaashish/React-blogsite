@@ -6,6 +6,7 @@ import CardStyle4_Blog from '../../Component/CardStyle/CardStyle4_Blog';
 import Footer from '../../Component/Footer/Footer';
 import Loader from '../../Component/Loader/Loader';
 import Navbar from '../../Component/Navbar';
+import SocialShare from '../../Component/Social share/SocialShare';
 
 const Blog = () => {
 
@@ -26,7 +27,16 @@ const Blog = () => {
     return (
         <>
             <Navbar />
-            <Suspense fallback={<Loader h="100vh"/>}>
+            <SocialShare
+                shareparam={{
+                    title: "",
+                    description: "",
+                    image_lg: "",
+                    image: ""
+
+                }}
+            />
+            <Suspense fallback={<Loader h="100vh" />}>
                 <div className="blog-post">
                     {isLoading ? <Spinner /> : data && data.map((item, index) => {
                         return (

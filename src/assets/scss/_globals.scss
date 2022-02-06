@@ -264,6 +264,55 @@ button.btn-sm {
 }
 //end spinner
 
+// scroll to top
+
+.scroll-box {
+  position: fixed;
+  bottom: calc(1rem + .6vw);
+  right:  calc(1rem + .6vw);;
+  width: 40px;
+  height: 40px;
+  background-color: $primary;
+  border-radius: 50px;
+  z-index: 4;
+  transition: 0.5s linear;
+  cursor: pointer;
+  // animation: scrollup 1s ease-in-out infinite;
+  i {
+    padding: 11px 13px;
+    font-size: 1.3rem;
+    color: white;
+  }
+
+  &:hover {
+    transform: scale(2);
+    animation: scrollup 1s ease-in-out infinite;
+
+  }
+  &:active{
+    animation: unset;
+    transform: scale(.6);
+  }
+}
+
+@keyframes scrollup {
+  0% {
+    transform: translateY(0%);
+  }
+  25% {
+    transform: translateY(5%);
+  }
+  50% {
+    transform: translateY(10%);
+  }
+  75% {
+    transform: translateY(5%);
+  }
+  100% {
+    transform: translateY(0%);
+  }
+}
+
 // hero section
 
 .hero1 {
@@ -455,7 +504,7 @@ button.btn-sm {
 
 // blog
 .blog-post {
-  padding: 1rem 1rem;
+  padding: 4.5rem 1rem;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(12rem, 1fr));
   grid-row-gap: 2rem;
@@ -463,14 +512,14 @@ button.btn-sm {
 }
 @media only screen and (min-width: 680px) {
   .blog-post {
-    padding: 2rem 4rem;
+    padding: 5rem 3.5rem;
     grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
   }
 }
 @media only screen and (min-width: 920px) {
   .blog-post {
-    padding: 4rem 7rem;
-    grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
+    padding: 6rem 7rem;
+    grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
   }
 }
 // /end blog

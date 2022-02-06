@@ -5,6 +5,7 @@ import { Callgetapi } from '../Api/CallApi';
 import Footer from '../Component/Footer/Footer';
 import HeroSection from '../Component/Hero/HeroSection';
 import Hero2 from '../Component/Hero2/Hero2';
+import HomeNavbar from '../Component/HomeNavbar';
 import Loader from '../Component/Loader/Loader';
 import Navbar from '../Component/Navbar';
 import { carousalpost, randompost } from '../Component/Postcount/PostLogic';
@@ -20,7 +21,7 @@ const Home = () => {
         })
     return (
         <>
-            <Navbar />
+            <HomeNavbar />
             <SocialShare
                 shareparam={{
                     title: "",
