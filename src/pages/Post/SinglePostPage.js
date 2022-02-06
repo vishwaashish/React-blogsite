@@ -72,7 +72,6 @@ const SinglePostPage = (props) => {
       shareparam={data ?? jsondata[9]}
     />
     <Suspense fallback={<Loader h="100vh" />}>
-
       <div className='post-page' style={{ backgroundImage: `linear-gradient(to bottom, rgba(0, 0, 0, 0.4), #00000090), url(${data?.image_lg ?? jsondata[9].image_lg})` }}>
         {/* <img src={data?.image_lg ?? jsondata[9].image_lg} loading="lazy" alt={data?.title ?? jsondata[9].title} /> */}
         <div className='post-page-box '>
