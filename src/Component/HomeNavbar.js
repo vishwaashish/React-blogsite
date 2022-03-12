@@ -5,8 +5,18 @@ import { NavLink, useLocation } from 'react-router-dom';
 import { HashLink } from 'react-router-hash-link';
 import { DARKMODE, LIGHTMODE } from '../Redux/action/action';
 import ModalSearch from './Modal/ModalSearch';
+import { StyleCSS } from './NavbarRoot';
 
 const HomeNavbar = () => {
+    const [colortoggle, setColorToggle] = React.useState(() => {
+        const local = localStorage.getItem('ColorToggle');
+        console.log("==========1==========");
+        if (local) {
+            return JSON.parse(local)
+        } else {
+            return ""
+        }
+    })
     const [navtoggle, setNavToggle] = React.useState(true)
     const [togglesearch, setTogglesearch] = React.useState(false)
     const [navbar, setNavbar] = React.useState(false)
@@ -22,58 +32,25 @@ const HomeNavbar = () => {
         changeBackground()
         window.addEventListener("scroll", changeBackground)
     })
+
     React.useEffect(() => {
-        if (modes) {
-            dispatch(DARKMODE())
+        if (!colortoggle) {
+            localStorage.setItem('ColorToggle', JSON.stringify({ iscolor: modes }))
         } else {
-            dispatch(LIGHTMODE())
+            localStorage.setItem('ColorToggle', JSON.stringify({ iscolor: colortoggle.iscolor }))
         }
-    }, [modes])
+    }, [colortoggle])
 
-    React.useLayoutEffect(() => {
-        const root = document.documentElement;
-
-        root?.style.setProperty(
-            '--background-color',
-            toggle ? "#1c1c27" : "#fff"
-        );
-        root?.style.setProperty(
-            "--background-color-shade",
-            toggle ? "#1c1c27" : "#f9f9f9"
-        );
-        root?.style.setProperty(
-            "--color",
-            toggle ? "#f6f9fc" : "#162039"
-        );
-        root?.style.setProperty(
-            "--box-background-color",
-            toggle ? "#28293d" : "#fff"
-        );
-        root?.style.setProperty(
-            "--box-background-color-shade",
-            toggle ? "#28293d" : "#f9f9f9"
-        );
-        root?.style.setProperty(
-            "--pcolor",
-            toggle ? "#adb5bd" : "#6f6f6f"
-        );
-        root?.style.setProperty(
-            "--shadow",
-            toggle ? "#adb5bd" : "#6f6f6f"
-        );
-        root?.style.setProperty(
-            "--footer",
-            toggle ? "#28293d" : "#162039"
-        );
-
-    }, [toggle]);
+    React.useEffect(() => {
+        StyleCSS({ colortoggle: colortoggle.iscolor ?? modes })
+    }, [colortoggle]);
 
     const Togglefuc = (e) => {
         const { checked } = e.target
         if (checked) {
-            dispatch(DARKMODE())
+            setColorToggle({ iscolor: true })
         } else {
-            dispatch(LIGHTMODE())
+            setColorToggle({ iscolor: false })
         }
     }
 
@@ -119,7 +96,7 @@ const HomeNavbar = () => {
                         </ul>
                     </nav>
                     <div className='togglemode'>
-                        <input type="checkbox" className="toggleinput" id="checkbox" checked={toggle} onChange={Togglefuc} />
+                        <input type="checkbox" className="toggleinput" id="checkbox" checked={colortoggle?.iscolor ?? modes} onChange={Togglefuc} />
                         <label htmlFor="checkbox" className="label">
                             <span className="toggle-moon">🌜</span>
                             <span className='toggle-sun'>🌞</span>
