@@ -1,16 +1,13 @@
 
 import React from 'react';
-import { useDispatch, useSelector } from 'react-redux';
 import { NavLink, useLocation } from 'react-router-dom';
 import { HashLink } from 'react-router-hash-link';
-import { DARKMODE, LIGHTMODE } from '../Redux/action/action';
 import ModalSearch from './Modal/ModalSearch';
 import { StyleCSS } from './NavbarRoot';
 
 const HomeNavbar = () => {
     const [colortoggle, setColorToggle] = React.useState(() => {
         const local = localStorage.getItem('ColorToggle');
-        console.log("==========1==========");
         if (local) {
             return JSON.parse(local)
         } else {
@@ -20,9 +17,6 @@ const HomeNavbar = () => {
     const [navtoggle, setNavToggle] = React.useState(true)
     const [togglesearch, setTogglesearch] = React.useState(false)
     const [navbar, setNavbar] = React.useState(false)
-    const toggle = useSelector(state => state.Darkmode)
-    const dispatch = useDispatch()
-
     const history = useLocation()
     const headerhide = React.useRef(null)
     const pathname = history.pathname === "/" || history.pathname === "/home"
@@ -39,11 +33,11 @@ const HomeNavbar = () => {
         } else {
             localStorage.setItem('ColorToggle', JSON.stringify({ iscolor: colortoggle.iscolor }))
         }
-    }, [colortoggle])
+    }, [colortoggle,modes])
 
     React.useEffect(() => {
         StyleCSS({ colortoggle: colortoggle.iscolor ?? modes })
-    }, [colortoggle]);
+    }, [colortoggle,modes]);
 
     const Togglefuc = (e) => {
         const { checked } = e.target
@@ -68,16 +62,6 @@ const HomeNavbar = () => {
         }
     }
 
-    const StyleHader = {
-        position: pathname ? 'absolute' : 'relative',
-        width: '100%',
-        boxShadow: pathname ? 'unset' : '0 0.125rem 0.25rem rgba(0, 0, 0, 0.075)',
-        marginTop: pathname ? '1.5rem' : 'relative',
-        zIndex: 2
-    }
-    const HyperLink = {
-        color: 'white',
-    }
     return (<>
         <div className="wrapper">
             {togglesearch && <ModalSearch toggle={setTogglesearch} isOpen={togglesearch} />}
@@ -90,8 +74,8 @@ const HomeNavbar = () => {
                             />
                         </svg>
                         <ul >
-                            <li><NavLink to="/" href="#" onClick={NavToggle}>Home</NavLink></li>
-                            <li><NavLink to="/blog" href="#" onClick={NavToggle}>Blog</NavLink></li>
+                            <li><NavLink to="/" href="#" className={pathname && 'active'} onClick={NavToggle}>Home</NavLink></li>
+                            <li><NavLink to="/blog" href="#" className={history.pathname === '/blog' && 'active'} onClick={NavToggle}>Blog</NavLink></li>
                             <li><HashLink smooth to={'#footer'} onClick={NavToggle}>Contact us</HashLink></li>
                         </ul>
                     </nav>
@@ -104,16 +88,13 @@ const HomeNavbar = () => {
                         </label>
                     </div>
                     <div className="navbar-search" onClick={ToggleSearch}>
-                        <i style={{ color: !navbar && 'white' }} className={pathname ? "fa fa-search " : "fa fa-search"} />
+                        <i style={{ color: !navbar && 'white' }} className="fa fa-search" />
                     </div>
                 </div>
                 <svg className="menu" onClick={() => setNavToggle(navtoggle => !navtoggle)} viewBox="0 0 48 32" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M24 32H0V26.6667H24V32ZM48 18.6667H0V13.3333H48V18.6667ZM48 5.33333H24V0H48V5.33333Z" fill="black" />
                 </svg>
             </header>
-            {toggle ? <div className='toggleeffect'>
-            </div> : <div className='toggleeffect1'></div>}
-
         </div>
 
     </>);

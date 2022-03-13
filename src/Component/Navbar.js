@@ -1,16 +1,11 @@
 
 import React from 'react';
-import { useDispatch, useSelector } from 'react-redux';
 import { NavLink, useLocation } from 'react-router-dom';
 import { HashLink } from 'react-router-hash-link';
-import { DARKMODE, LIGHTMODE } from '../Redux/action/action';
 import ModalSearch from './Modal/ModalSearch';
 import { StyleCSS } from './NavbarRoot';
 
 const Navbar = () => {
-    const [navtoggle, setNavToggle] = React.useState(true)
-    const [togglesearch, setTogglesearch] = React.useState(false)
-    const [navbar, setNavbar] = React.useState(false)
     const [colortoggle, setColorToggle] = React.useState(() => {
         const local = localStorage.getItem('ColorToggle');
         if (local) {
@@ -19,9 +14,9 @@ const Navbar = () => {
             return ""
         }
     })
-    const toggle = useSelector(state => state.Darkmode)
-    const dispatch = useDispatch()
-
+    const [navtoggle, setNavToggle] = React.useState(true)
+    const [togglesearch, setTogglesearch] = React.useState(false)
+    const [navbar, setNavbar] = React.useState(false)
     const history = useLocation()
     const headerhide = React.useRef(null)
     const pathname = history.pathname === "/" || history.pathname === "/home"
@@ -38,19 +33,17 @@ const Navbar = () => {
         } else {
             localStorage.setItem('ColorToggle', JSON.stringify({ iscolor: colortoggle.iscolor }))
         }
-    }, [colortoggle])
+    }, [colortoggle,modes])
 
     React.useEffect(() => {
         StyleCSS({ colortoggle: colortoggle.iscolor ?? modes })
-    }, [colortoggle]);
+    }, [colortoggle,modes]);
 
     const Togglefuc = (e) => {
         const { checked } = e.target
         if (checked) {
-            // dispatch(DARKMODE())
             setColorToggle({ iscolor: true })
         } else {
-            // dispatch(LIGHTMODE())
             setColorToggle({ iscolor: false })
         }
     }
@@ -83,8 +76,8 @@ const Navbar = () => {
                             />
                         </svg>
                         <ul >
-                            <li><NavLink to="/" href="#" onClick={NavToggle}>Home</NavLink></li>
-                            <li><NavLink to="/blog" href="#" onClick={NavToggle}>Blog</NavLink></li>
+                            <li><NavLink to="/" href="#" className={pathname && 'active'} onClick={NavToggle}>Home</NavLink></li>
+                            <li><NavLink to="/blog" href="#" className={history.pathname === '/blog' && 'active'} onClick={NavToggle}>Blog</NavLink></li>
                             <li><HashLink smooth to={'#footer'} onClick={NavToggle}>Contact us</HashLink></li>
                         </ul>
                     </nav>
@@ -104,9 +97,6 @@ const Navbar = () => {
                     <path d="M24 32H0V26.6667H24V32ZM48 18.6667H0V13.3333H48V18.6667ZM48 5.33333H24V0H48V5.33333Z" fill="black" />
                 </svg>
             </header>
-            {toggle ? <div className='toggleeffect'>
-            </div> : <div className='toggleeffect1'></div>}
-
         </div>
 
     </>);

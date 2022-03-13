@@ -235,20 +235,8 @@ nav {
           transition: transform 0.3s;
         }
 
-        &:hover {
-          background: none;
-          &:after {
-            transform-origin: bottom left;
-            transform: scaleX(1);
-          }
-        }
-        &:focus {
-          background: none;
-          &:after {
-            transform-origin: bottom left;
-            transform: scaleX(1);
-          }
-        }
+        &:hover,
+        &:focus,
         &:active {
           background: none;
           &:after {
@@ -256,6 +244,28 @@ nav {
             transform: scaleX(1);
           }
         }
+
+        &.active {
+          background: none;
+          &:after {
+            transform-origin: bottom left;
+            transform: scaleX(1);
+          }
+        }
+        // &:focus {
+        //   background: none;
+        //   &:after {
+        //     transform-origin: bottom left;
+        //     transform: scaleX(1);
+        //   }
+        // }
+        // &:active {
+        //   background: none;
+        //   &:after {
+        //     transform-origin: bottom left;
+        //     transform: scaleX(1);
+        //   }
+        // }
       }
     }
   }

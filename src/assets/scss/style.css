@@ -35,9 +35,13 @@
 body {
   color: var(--color);
   background-color: var(--background-color);
-  letter-spacing: 0.5px;
+  letter-spacing: 0.2px;
   font-size: calc(12px + 0.2vw);
   line-height: calc(21px + 0.4vw);
+}
+
+main {
+  min-height: calc(100vh - 417px);
 }
 
 ::-webkit-scrollbar {
@@ -316,8 +320,8 @@ button.btn-sm {
 
 .scroll-box {
   position: fixed;
-  bottom: calc(1rem + .6vw);
-  right: calc(1rem + .6vw);
+  bottom: calc(1rem + 0.6vw);
+  right: calc(1rem + 0.6vw);
   width: 40px;
   height: 40px;
   background-color: #7e49f2;
@@ -329,9 +333,12 @@ button.btn-sm {
 }
 
 .scroll-box i {
-  padding: 11px 13px;
   font-size: 1.3rem;
   color: white;
+  display: -ms-grid;
+  display: grid;
+  place-content: center;
+  height: 100%;
 }
 
 .scroll-box:hover {
@@ -920,28 +927,19 @@ nav .close .path {
     transition: transform 0.3s;
     transition: transform 0.3s, -webkit-transform 0.3s;
   }
-  nav ul a:hover {
+  nav ul a:hover, nav ul a:focus, nav ul a:active {
     background: none;
   }
-  nav ul a:hover:after {
+  nav ul a:hover:after, nav ul a:focus:after, nav ul a:active:after {
     -webkit-transform-origin: bottom left;
             transform-origin: bottom left;
     -webkit-transform: scaleX(1);
             transform: scaleX(1);
   }
-  nav ul a:focus {
+  nav ul a.active {
     background: none;
   }
-  nav ul a:focus:after {
-    -webkit-transform-origin: bottom left;
-            transform-origin: bottom left;
-    -webkit-transform: scaleX(1);
-            transform: scaleX(1);
-  }
-  nav ul a:active {
-    background: none;
-  }
-  nav ul a:active:after {
+  nav ul a.active:after {
     -webkit-transform-origin: bottom left;
             transform-origin: bottom left;
     -webkit-transform: scaleX(1);
@@ -1153,6 +1151,7 @@ nav .close .path {
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
+  color: var(--color);
 }
 
 .card .card-description {
@@ -1187,6 +1186,10 @@ nav .close .path {
   padding: 1rem 0rem;
 }
 
+.card .cardstyle-body-2 .card-title {
+  color: var(--color);
+}
+
 .card .cardstyle-body-2 .card-description {
   padding-top: 0.3rem;
   padding-bottom: 0.2rem;
@@ -1207,8 +1210,8 @@ nav .close .path {
   border-top-right-radius: 0.5rem;
   width: 100%;
   display: block;
-  -o-object-fit: cover;
-     object-fit: cover;
+  -o-object-fit: fill;
+     object-fit: fill;
 }
 
 .card .imageoveray .cardstyle-img-4 {
@@ -1217,8 +1220,8 @@ nav .close .path {
   border-top-right-radius: 0.5rem;
   width: 100%;
   display: block;
-  -o-object-fit: cover;
-     object-fit: cover;
+  -o-object-fit: fill;
+     object-fit: fill;
 }
 
 .card:hover .imageoveray {
@@ -1243,8 +1246,8 @@ nav .close .path {
   cursor: pointer;
   opacity: 0.9;
   background-color: #7e49f2;
-  -o-object-fit: fill;
-     object-fit: fill;
+  -o-object-fit: cover;
+     object-fit: cover;
   -webkit-transition: all 0.5s ease-in-out;
   transition: all 0.5s ease-in-out;
 }
@@ -1319,8 +1322,8 @@ nav .close .path {
 }
 
 .footers .footer-1 {
-  padding-top: calc(4em + 1vw);
-  padding-bottom: calc(4em + 1vw);
+  padding-top: calc(2em + 1vw);
+  padding-bottom: calc(2em + 1vw);
   padding-left: 1em;
   padding-right: 1em;
   background-color: var(--footer);
@@ -1438,8 +1441,13 @@ nav .close .path {
   padding: 2rem 1rem;
 }
 
+.post-page .post-page-box .not-found {
+  font-size: xx-large;
+  margin-top: 1rem;
+}
+
 .post-page .post-page-box .breadcrumb {
-  font-size: 0.7rem;
+  font-size: 0.9rem;
   line-height: 1.6;
   text-align: center;
   letter-spacing: 0;
@@ -1784,7 +1792,8 @@ nav .close .path {
 }
 
 .fixed-social-share .fa,
-.fixed-social-share .fab, .fixed-social-share .fas {
+.fixed-social-share .fab,
+.fixed-social-share .fas {
   font-size: calc(0.8rem + 0.6vw);
   color: var(--color);
   right: 0;
@@ -1803,6 +1812,37 @@ nav .close .path {
             transform: translateX(-12rem);
     left: 0;
     top: 40%;
+  }
+}
+
+.sticky-social-share {
+  display: none;
+}
+
+@media screen and (min-width: 680px) {
+  .sticky-social-share {
+    display: block;
+    position: fixed;
+    left: 0;
+    top: 50%;
+    -webkit-transform: translate(0, -50%);
+            transform: translate(0, -50%);
+    background-color: var(--box-background-color);
+    padding: 1rem 0.5rem;
+    border-radius: 0 0.5rem 0.5rem 0;
+    -webkit-box-shadow: 0px 0 10px 2px #00000010;
+            box-shadow: 0px 0 10px 2px #00000010;
+    z-index: 1;
+  }
+  .sticky-social-share .icon .fl-fl {
+    font-size: calc(1.2rem + 0.3vw);
+  }
+  .sticky-social-share .icon .fl-fl:nth-child(even) {
+    margin: 0.7rem 0;
+  }
+  .sticky-social-share .icon .fl-fl:hover {
+    -webkit-transform: scale(1.3);
+            transform: scale(1.3);
   }
 }
 /*# sourceMappingURL=style.css.map */

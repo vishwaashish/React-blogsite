@@ -36,11 +36,14 @@
 body {
   color: var(--color);
   background-color: var(--background-color);
-  letter-spacing: 0.5px;
+  letter-spacing: 0.2px;
   font-size: calc(12px + 0.2vw);
   line-height: calc(21px + 0.4vw);
 }
 
+main {
+  min-height: calc(100vh - 417px);
+}
 ::-webkit-scrollbar {
   width: 6px; /* Remove scrollbar space */
   background: var(
@@ -268,8 +271,8 @@ button.btn-sm {
 
 .scroll-box {
   position: fixed;
-  bottom: calc(1rem + .6vw);
-  right:  calc(1rem + .6vw);;
+  bottom: calc(1rem + 0.6vw);
+  right: calc(1rem + 0.6vw);
   width: 40px;
   height: 40px;
   background-color: $primary;
@@ -279,19 +282,20 @@ button.btn-sm {
   cursor: pointer;
   // animation: scrollup 1s ease-in-out infinite;
   i {
-    padding: 11px 13px;
     font-size: 1.3rem;
     color: white;
+    display: grid;
+    place-content: center;
+    height: 100%;
   }
 
   &:hover {
     transform: scale(2);
     animation: scrollup 1s ease-in-out infinite;
-
   }
-  &:active{
+  &:active {
     animation: unset;
-    transform: scale(.6);
+    transform: scale(0.6);
   }
 }
 

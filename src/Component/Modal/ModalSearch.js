@@ -1,20 +1,17 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useRef } from 'react';
 import { useQuery } from 'react-query';
-import { NavLink, useLocation, useNavigate } from 'react-router-dom';
+import { NavLink} from 'react-router-dom';
 import { Callgetapi } from '../../Api/CallApi';
 
 const ModalSearch = (props) => {
 
-    const { isOpen, toggle } = props
+    const { toggle } = props
     const { data } = useQuery('post', Callgetapi)
     const inputref = useRef(null)
     const [values, setValues] = React.useState("")
     const [apidata, setApiData] = React.useState([])
     const ToggleClose = () => {
         toggle(isOpen => !isOpen)
-    }
-    const ToggleOpen = () => {
-        toggle(isOpen => isOpen)
     }
     React.useEffect(() => {
         inputref.current.focus();

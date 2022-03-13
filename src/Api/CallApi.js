@@ -4,6 +4,6 @@ export const Callgetapi = async () => {
 }
 
 export const Callgetapibyid = async (id) => {
-    const resp = jsondata.find(val => val.id === +id.id)
+    const resp = jsondata.find(val => val.id === +id)
     return resp
 }

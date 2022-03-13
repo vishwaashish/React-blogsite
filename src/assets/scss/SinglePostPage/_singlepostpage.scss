@@ -19,8 +19,13 @@
     grid-template-columns: 100%;
     padding: 2rem 1rem;
 
+    .not-found {
+      font-size: xx-large;
+      margin-top: 1rem;
+    }
+
     .breadcrumb {
-      font-size: 0.7rem;
+      font-size: 0.9rem;
       line-height: 1.6;
       text-align: center;
       letter-spacing: 0;

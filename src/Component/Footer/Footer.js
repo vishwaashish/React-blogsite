@@ -13,7 +13,7 @@ const Footer = () => {
                     <div className="footer-1-1">
                         <h2 className="abouttitle"><NavLink to="/" onClick={ScrollUp}>Technotaught</NavLink></h2>
                         <p className='aboutdescription'>Technotaught is a blog based dummy site just for knowledge purposes created by <a href='https://github.com/vishwaashish' target="_blank">Ashishkumar Vishwakarma</a>. If you have any questions or suggestions about a look, feel, or anything. Please let us know.</p>
-                        <p>Email:- <a href='mailto:vishwakarmaashish165@gmail.com'>vishwakarmaashish165@gmail.com</a></p>
+                        <p>Email : <a href='mailto:vishwakarmaashish165@gmail.com'>vishwakarmaashish165@gmail.com</a></p>
                     </div>
                     <div className="footer-1-2">
                         <h4>Help</h4>

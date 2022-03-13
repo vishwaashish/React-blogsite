@@ -1,6 +1,6 @@
 import React from 'react';
-import { Link, NavLink } from 'react-router-dom';
-const CardStyle4_Blog = (props) => {
+import { NavLink } from 'react-router-dom';
+const CardStyle4Blog = (props) => {
   const { title, description, id, image, width } = props.posts
   return (
     <>
@@ -13,16 +13,19 @@ const CardStyle4_Blog = (props) => {
         </NavLink>
 
         <div className="cardstyle-body-3">
-          <h4 className="card-title">{title}</h4>
-          <div className="card-description" dangerouslySetInnerHTML={{__html:description}}></div>
-          <Link
+          <NavLink
             to={"/post/" + id}
             state={props.posts}
-          >Read Article</Link>
+          ><h4 className="card-title">{title}</h4></NavLink>
+          <div className="card-description" dangerouslySetInnerHTML={{ __html: description }}></div>
+          <NavLink
+            to={"/post/" + id}
+            state={props.posts}
+          >Read Article</NavLink>
         </div>
       </div>
     </>
   );
 };
 
-export default React.memo(CardStyle4_Blog);
+export default React.memo(CardStyle4Blog);

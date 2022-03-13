@@ -5,9 +5,9 @@ const CardStyle1 = (props) => {
   return (
     <>
       <div className="card" style={{ width: width }}>
-        <img src={image} className='cardstyle-img-1' alt={title} />
+        <NavLink to={"/post/" + id}><img src={image} className='cardstyle-img-1' alt={title} /></NavLink>
         <div className="cardstyle-body-1">
-          <h3 className="card-title">{title && title}</h3>
+          <NavLink to={"/post/" + id}><h3 className="card-title">{title && title}</h3></NavLink>
           <div className="card-description" dangerouslySetInnerHTML={{ __html: description }}></div>
           <NavLink to={"/post/" + id}><button className="outline" >Read Article</button></NavLink>
         </div>

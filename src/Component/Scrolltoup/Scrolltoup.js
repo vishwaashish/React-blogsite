@@ -1,7 +1,6 @@
 import React from 'react';
 
 const Scrolltoup = () => {
-
     const [scroll, setScroll] = React.useState(false)
     React.useEffect(() => {
         ChangeBackground()
@@ -10,8 +9,6 @@ const Scrolltoup = () => {
     const Scollup = () => {
         window.scroll(0, 0)
     };
-
-
     const ChangeBackground = () => {
         if (window.scrollY >= 100) {
             setScroll(true)
