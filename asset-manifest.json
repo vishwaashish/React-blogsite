@@ -1,13 +1,13 @@
 {
   "files": {
     "main.css": "/React-blogsite/static/css/main.7941cdad.css",
-    "main.js": "/React-blogsite/static/js/main.54506530.js",
+    "main.js": "/React-blogsite/static/js/main.b6557a18.js",
     "static/js/306.490d848a.chunk.js": "/React-blogsite/static/js/306.490d848a.chunk.js",
-    "static/js/977.4d04aa86.chunk.js": "/React-blogsite/static/js/977.4d04aa86.chunk.js",
+    "static/js/977.268f23d5.chunk.js": "/React-blogsite/static/js/977.268f23d5.chunk.js",
     "static/js/715.ec6aa413.chunk.js": "/React-blogsite/static/js/715.ec6aa413.chunk.js",
     "static/js/445.2b2d9cba.chunk.js": "/React-blogsite/static/js/445.2b2d9cba.chunk.js",
     "static/js/704.04c476d3.chunk.js": "/React-blogsite/static/js/704.04c476d3.chunk.js",
-    "static/js/664.a0e6ca34.chunk.js": "/React-blogsite/static/js/664.a0e6ca34.chunk.js",
+    "static/js/664.c1ff81b6.chunk.js": "/React-blogsite/static/js/664.c1ff81b6.chunk.js",
     "static/media/fa-solid-900.svg": "/React-blogsite/static/media/fa-solid-900.7a8b4f130182d19a2d7c.svg",
     "static/media/fa-brands-400.svg": "/React-blogsite/static/media/fa-brands-400.2f517e09eb2ca6650ff5.svg",
     "static/media/8.jpg": "/React-blogsite/static/media/8.58e40e90f067e2972c03.jpg",
@@ -38,16 +38,16 @@
     "static/media/Loader.svg": "/React-blogsite/static/media/Loader.4b58ccb6a6d71f18cbcf6da72e43255c.svg",
     "index.html": "/React-blogsite/index.html",
     "main.7941cdad.css.map": "/React-blogsite/static/css/main.7941cdad.css.map",
-    "main.54506530.js.map": "/React-blogsite/static/js/main.54506530.js.map",
+    "main.b6557a18.js.map": "/React-blogsite/static/js/main.b6557a18.js.map",
     "306.490d848a.chunk.js.map": "/React-blogsite/static/js/306.490d848a.chunk.js.map",
-    "977.4d04aa86.chunk.js.map": "/React-blogsite/static/js/977.4d04aa86.chunk.js.map",
+    "977.268f23d5.chunk.js.map": "/React-blogsite/static/js/977.268f23d5.chunk.js.map",
     "715.ec6aa413.chunk.js.map": "/React-blogsite/static/js/715.ec6aa413.chunk.js.map",
     "445.2b2d9cba.chunk.js.map": "/React-blogsite/static/js/445.2b2d9cba.chunk.js.map",
     "704.04c476d3.chunk.js.map": "/React-blogsite/static/js/704.04c476d3.chunk.js.map",
-    "664.a0e6ca34.chunk.js.map": "/React-blogsite/static/js/664.a0e6ca34.chunk.js.map"
+    "664.c1ff81b6.chunk.js.map": "/React-blogsite/static/js/664.c1ff81b6.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.7941cdad.css",
-    "static/js/main.54506530.js"
+    "static/js/main.b6557a18.js"
   ]
 }
