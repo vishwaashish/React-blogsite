@@ -14,7 +14,7 @@ function App() {
   return (
     <div className="App ">
       <Suspense fallback={<Loader h="100vh" />}>
-        <Scrolltoup/>
+        <Scrolltoup />
         <HashRouter>
           <Routes>
             <Route path="/" element={<Home />} />
