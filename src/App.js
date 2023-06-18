@@ -1,7 +1,7 @@
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import { AnimatePresence } from "framer-motion";
 import React, { Suspense } from "react";
-import { Route, Routes, useLocation } from "react-router-dom";
+import { useLocation, useRoutes } from "react-router-dom";
 import AnimatePage from "./Component/AnimatePage";
 import Footer from "./Component/Footer/Footer";
 import Navbar from "./Component/Header/Navbar";
@@ -18,12 +18,32 @@ const SinglePostPage = React.lazy(() => import("./pages/Post/SinglePostPage"));
 
 function App() {
   const location = useLocation();
+  const elements = useRoutes([
+    {
+      path: "/",
+      element: <AnimatePage children={<Home />} />,
+    },
+    {
+      path: "/blog",
+      element: <AnimatePage children={<Blog />} />,
+    },
+    {
+      path: "/post/:id",
+      element: <AnimatePage children={<SinglePostPage />} />,
+    },
+    {
+      path: "*",
+      element: <AnimatePage children={<Home />} />,
+    },
+  ]);
   return (
     <Suspense fallback={<Loader h="100vh" />}>
       <Scrolltoup />
-        <Navbar />
+      <Navbar />
       <AnimatePresence mode="wait" initial={false}>
-        <Routes key={location.pathname} location={location}>
+        {React.cloneElement(elements, { key: location.pathname })}
+
+        {/* <Routes key={location.pathname} location={location}>
           <Route path="/" element={<AnimatePage children={<Home />} />} />
           <Route path="/blog" element={<AnimatePage children={<Blog />} />} />
           <Route
@@ -31,7 +51,7 @@ function App() {
             element={<AnimatePage children={<SinglePostPage />} />}
           />
           <Route path="*" element={<AnimatePage children={<Home />} />} />
-        </Routes>
+        </Routes> */}
         <Footer />
       </AnimatePresence>
     </Suspense>

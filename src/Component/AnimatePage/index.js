@@ -14,12 +14,6 @@ const AnimatePage = ({ children }) => {
             when: "beforeChildren",
           },
         }}
-        onAnimationStart={() => {
-          console.log("state");
-        }}
-        onAnimationComplete={() => {
-          console.log("done");
-        }}
         exit={{ scaleX: 1, transition: { duration: 0.5, ease: "circIn" } }}
         style={{ originX: isPresent ? 0 : 1 }}
         className="router-motion"
