@@ -90,10 +90,10 @@ header {
     padding-left: calc(1em + 0.6vw);
     font-size: 1.5em;
     cursor: pointer;
-    &:hover {
-      transition: 0.3s ease-in-out;
-      transform: scale(0.9);
-    }
+    // &:hover {
+    //   transition: 0.3s ease-in-out;
+    //   transform: scale(0.9);
+    // }
   }
 
   .menu {

@@ -1,6 +1,5 @@
 @import "../variables";
 
-
 .fixed-social-share {
   z-index: 999999;
   transform: translateX(-10rem);
@@ -80,5 +79,10 @@
     display: flex;
     flex-direction: column;
     gap: 1rem;
+
+    a,
+    i {
+      color: var(--pcolor);
+    }
   }
 }

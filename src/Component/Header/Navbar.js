@@ -3,6 +3,8 @@ import { NavLink } from "react-router-dom";
 import { HashLink } from "react-router-hash-link";
 import ModalSearch from "../Modal/ModalSearch";
 import useHeader from "./useHeader";
+import { AnimatePresence } from "framer-motion";
+import { AnimateIcon } from "../AnimateClick";
 
 const Navbar = () => {
   const {
@@ -34,9 +36,11 @@ const Navbar = () => {
 
   return (
     <>
-      {togglesearch && (
-        <ModalSearch toggle={setTogglesearch} isOpen={togglesearch} />
-      )}
+      <AnimatePresence initial={false}>
+        {togglesearch && (
+          <ModalSearch toggle={setTogglesearch} isOpen={togglesearch} />
+        )}
+      </AnimatePresence>
       <div className="wrapper">
         <header className={headerClass()}>
           <NavLink to="/" className="logo">
@@ -95,7 +99,9 @@ const Navbar = () => {
               </label>
             </div>
             <div className="navbar-search" onClick={ToggleSearch}>
-              <i className={pathname ? "fa fa-search " : "fa fa-search"} />
+              <AnimateIcon
+                className={pathname ? "fa fa-search " : "fa fa-search"}
+              />
             </div>
           </div>
           <svg

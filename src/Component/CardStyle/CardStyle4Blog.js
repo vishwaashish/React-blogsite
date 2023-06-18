@@ -16,10 +16,11 @@ const CardStyle4Blog = (props) => {
           opacity: [0, 1],
         },
         {
-          duration: 0.5,
           delay: index / 5,
+          duration: 0.1,
           type: "spring",
-          damping: 10,
+          damping: 12,
+          stiffness: 50,
         }
       );
     };

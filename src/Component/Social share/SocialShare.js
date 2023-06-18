@@ -6,7 +6,6 @@ const SocialShare = (props) => {
   const currenthref = window.location.href;
 
   return (
-    <div>
       <div className="sticky-social-share">
         <IconLink
           href={`https://www.facebook.com/sharer/sharer.php?u=${currenthref}&quote=${
@@ -36,7 +35,6 @@ const SocialShare = (props) => {
           <i className="fab fa-whatsapp" />
         </IconLink>
       </div>
-    </div>
   );
 };
 
