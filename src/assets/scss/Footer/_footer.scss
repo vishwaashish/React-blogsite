@@ -56,41 +56,23 @@
 
   .footer-2 {
     background-color: $gray-900;
-    display: grid;
-    padding-top: 1em;
-    padding-bottom: 1em;
-    padding-left: 1em;
-    padding-right: 1em;
-    grid-template-columns: repeat(2, auto);
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.2rem;
+    padding: 0.5em 1em;
     justify-content: space-between;
     align-items: center;
 
     p {
       padding: 0;
     }
-    .footer-2-1 {
+
+    .social-icon {
+      display: flex;
+      gap: 0.8rem;
       a {
-        text-decoration: none;
-        color: $gray-500;
-        &:hover {
-          color: $primary;
-        }
-      }
-    }
-
-    .footer-2-2 {
-      ul {
-        display: flex;
-        i {
-          color: $gray-400;
-          padding: 0rem 0.3rem;
-
-          &:hover {
-            color: $primary;
-            transform: translateY(-10%);
-            transition: 0.2s ease-in-out;
-          }
-        }
+        font-size: medium;
+        color: $gray-400;
       }
     }
   }
@@ -98,26 +80,18 @@
 
 @media only screen and (min-width: 680px) {
   .footers {
-    .footer-1 {
-      padding-left: 4em;
-      padding-right: 4em;
-    }
+    .footer-1,
     .footer-2 {
-      padding-left: 4em;
-      padding-right: 4em;
+      padding-inline: 4em;
     }
   }
 }
 
 @media only screen and (min-width: 920px) {
   .footers {
-    .footer-1 {
-      padding-left: 8em;
-      padding-right: 8em;
-    }
+    .footer-1,
     .footer-2 {
-      padding-left: 8em;
-      padding-right: 8em;
+      padding-inline: 8em;
     }
   }
 }

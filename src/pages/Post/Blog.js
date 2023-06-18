@@ -1,38 +1,16 @@
-import React, { Suspense, memo } from "react";
+import { AnimatePresence, motion } from "framer-motion";
+import React from "react";
 import { useQuery } from "react-query";
 import { Callgetapi } from "../../Api/CallApi";
 import CardStyle4Blog from "../../Component/CardStyle/CardStyle4Blog";
-import Footer from "../../Component/Footer/Footer";
-import Navbar from "../../Component/Navbar";
-import SocialShare from "../../Component/Social share/SocialShare";
-import { motion } from "framer-motion";
 import Loader from "../../Component/Loader/Loader";
-const Spinner = memo(() => (
-  <div
-    style={{
-      display: "flex",
-      height: "100vh",
-      justifyContent: "center",
-      alignItems: "center",
-    }}
-  >
-    <svg className="spinner" viewBox="0 0 50 50">
-      <circle
-        className="path"
-        cx="25"
-        cy="25"
-        r="20"
-        fill="none"
-        strokeWidth="5"
-      ></circle>
-    </svg>
-  </div>
-));
+import SocialShare from "../../Component/Social share/SocialShare";
 
 const Blog = () => {
   const { data, isLoading } = useQuery(["post"], Callgetapi, {
     keepPreviousData: true,
     staleTime: Infinity,
+    suspense: true,
   });
 
   if (isLoading) {
@@ -41,7 +19,7 @@ const Blog = () => {
 
   return (
     <>
-      <Navbar />
+      {/* <Navbar /> */}
       <SocialShare
         shareparam={{
           title: "",
@@ -50,12 +28,31 @@ const Blog = () => {
           image: "",
         }}
       />
-      <motion.main className="blog-post">
-        {data?.map((item) => {
-          return <CardStyle4Blog posts={item} />;
-        })}
+      <motion.main
+        initial={{
+          opacity: 0,
+        }}
+        animate={{
+          opacity: 1,
+        }}
+        transition={{
+          duration: 0.3,
+          delay: 0.1,
+        }}
+        className="blog-post"
+      >
+        <AnimatePresence>
+          {data?.map((item, index) => {
+            return (
+              <CardStyle4Blog
+                key={String(item.title + index)}
+                posts={item}
+                index={index}
+              />
+            );
+          })}
+        </AnimatePresence>
       </motion.main>
-      <Footer />
     </>
   );
 };

@@ -221,6 +221,11 @@ button.btn-sm {
     color: $pinterest !important;
   }
 }
+.fa-linkedin {
+  &:hover {
+    color: $linkedin !important;
+  }
+}
 // spinner
 .spinner {
   animation: rotate 2s linear infinite;
@@ -527,3 +532,13 @@ button.btn-sm {
   }
 }
 // /end blog
+
+.router-motion {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: $primary;
+  z-index: 100000;
+}

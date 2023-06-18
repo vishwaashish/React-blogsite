@@ -1,20 +1,20 @@
+import { motion } from "framer-motion";
 import moment from "moment";
-import React, { Suspense, useRef } from "react";
+import React, { Suspense, useCallback } from "react";
+import { Helmet } from "react-helmet";
 import { useQuery } from "react-query";
-import { useParams } from "react-router-dom";
+import { NavLink, useParams } from "react-router-dom";
 import { Callgetapi, Callgetapibyid } from "../../Api/CallApi";
 import { jsondata } from "../../Api/data";
-import Footer from "../../Component/Footer/Footer";
-import Navbar from "../../Component/Navbar";
-import SocialShare from "../../Component/Social share/SocialShare";
-import { Helmet } from "react-helmet";
-import Loader from "../../Component/Loader/Loader";
-import { NavLink } from "react-router-dom";
-import { randompost } from "../../Component/Postcount/PostLogic";
+import { IconLink } from "../../Component/AnimateClick";
 import CardStyle3 from "../../Component/CardStyle/CardStyle3";
-import { motion } from "framer-motion";
+import Loader from "../../Component/Loader/Loader";
+import Spinner from "../../Component/Loader/Spinner";
+import { randompost } from "../../Component/Postcount/PostLogic";
+import SocialShare from "../../Component/Social share/SocialShare";
+import Navbar from "../../Component/Header/Navbar";
 
-const variants = {
+const postPageBoxVariants = {
   open: {
     y: 50,
     opacity: 0,
@@ -38,17 +38,13 @@ const variants = {
     },
   },
 };
-const variants1 = {
+const breadcrumbVariants = {
   open: {
     y: 50,
     opacity: 0,
     transition: {
       duration: 0.5,
       delay: 10,
-      // type: "spring",
-      // damping: 10,
-      // mass: 0.75,
-      // stiffness: 100,
     },
   },
   close: {
@@ -56,17 +52,15 @@ const variants1 = {
     opacity: 1,
     transition: {
       duration: 0.5,
-      // type: "spring",
-      // damping: 10,
-      // mass: 0.75,
-      // stiffness: 100,
     },
   },
 };
 
-const SinglePostPage = (props) => {
+const SinglePostPage = () => {
   const currenthref = window.location.href;
+
   const param = useParams();
+
   const { data, isLoading } = useQuery(["singlepost", param.id], async () => {
     try {
       return await Callgetapibyid(param.id);
@@ -74,40 +68,20 @@ const SinglePostPage = (props) => {
       throw new Error("Error");
     }
   });
-  const { data: rdata, isLoading: rLoading } = useQuery("post", Callgetapi, {
+
+  const { data: rdata, isLoading: rLoading } = useQuery(["post"], Callgetapi, {
     keepPreviousData: true,
     staleTime: Infinity,
   });
 
   const { image_lg, title, description } = data || jsondata[9];
 
-  const randomarticle = randompost(rdata, 3);
+  const randomarticle = useCallback(() => randompost(rdata, 3), [rdata]);
 
   React.useEffect(() => {
     window.scrollTo(0, 0);
   }, [param]);
 
-  const Spinner = () => (
-    <div
-      style={{
-        display: "flex",
-        height: 400,
-        justifyContent: "center",
-        alignItems: "center",
-      }}
-    >
-      <svg className="spinner" viewBox="0 0 50 50">
-        <circle
-          className="path"
-          cx="25"
-          cy="25"
-          r="20"
-          fill="none"
-          strokeWidth="5"
-        ></circle>
-      </svg>
-    </div>
-  );
   const Seo = () => (
     <>
       {!isLoading && (
@@ -148,7 +122,8 @@ const SinglePostPage = (props) => {
 
   return (
     <>
-      <Navbar />
+      {/* <Navbar /> */}
+
       <SocialShare shareparam={data ?? jsondata[9]} />
 
       {isLoading && <Loader h="100vh" />}
@@ -164,13 +139,13 @@ const SinglePostPage = (props) => {
         >
           <motion.div
             className="post-page-box "
-            variants={variants}
+            variants={postPageBoxVariants}
             initial="open"
             animate="close"
           >
             <motion.div
               className="breadcrumb"
-              variants={variants1}
+              variants={breadcrumbVariants}
               initial="open"
               animate="close"
             >
@@ -178,8 +153,13 @@ const SinglePostPage = (props) => {
               <NavLink to="/blog">Blog</NavLink> /{" "}
               <span className="active">{title}</span>
             </motion.div>
+
             {data && (
-              <motion.div variants={variants1} initial="open" animate="close">
+              <motion.div
+                variants={breadcrumbVariants}
+                initial="open"
+                animate="close"
+              >
                 <Seo />
                 <h1>{title}</h1>
                 <div className="date">{moment().format("LL")}</div>
@@ -193,57 +173,50 @@ const SinglePostPage = (props) => {
                 </motion.div>
                 <div className="post-page-box-1">
                   <div className="post-page-box-1-1">
-                    <div
+                    <motion.div
                       className="description"
                       dangerouslySetInnerHTML={{
                         __html: description,
                       }}
-                    ></div>
+                      initial="hidden"
+                      whileInView="visible"
+                      viewport={{ once: true }}
+                    ></motion.div>
                     <div className="social-share">
                       <h4>Share on</h4>
-                      <ul>
-                        <li>
-                          <a
-                            href={`https://www.facebook.com/sharer/sharer.php?u=${currenthref}&quote=${title}`}
-                          >
-                            <i className="fab fa-facebook" />
-                          </a>
-                        </li>
-                        <li>
-                          <a
-                            href={`http://twitter.com/share?text=${title}&url=${currenthref}`}
-                          >
-                            <i className="fab fa-twitter" />
-                          </a>
-                        </li>
-                        <li>
-                          <a
-                            href={`"https://www.pinterest.com/pin/create/button/?url=${currenthref}&media=${image_lg}&description=${description}`}
-                            target="_blank"
-                            rel="noreferrer"
-                          >
-                            <i className="fab fa-pinterest" />
-                          </a>
-                        </li>
-                        <li>
-                          <a
-                            href={`https://wa.me/?text=${currenthref}`}
-                            target="_blank"
-                            rel="noreferrer"
-                          >
-                            <i className="fab fa-whatsapp" />
-                          </a>
-                        </li>
-                        <li>
-                          <a
-                            href={`mailto:?subject=${title}&amp;body=${currenthref}`}
-                            target="_blank"
-                            rel="noreferrer"
-                          >
-                            <i className="fas fa-envelope" />
-                          </a>
-                        </li>
-                      </ul>
+                      <div>
+                        <IconLink
+                          href={`https://www.facebook.com/sharer/sharer.php?u=${currenthref}&quote=${title}`}
+                        >
+                          <i className="fab fa-facebook" />
+                        </IconLink>
+                        <IconLink
+                          href={`http://twitter.com/share?text=${title}&url=${currenthref}`}
+                        >
+                          <i className="fab fa-twitter" />
+                        </IconLink>
+                        <IconLink
+                          href={`"https://www.pinterest.com/pin/create/button/?url=${currenthref}&media=${image_lg}&description=${description}`}
+                          target="_blank"
+                          rel="noreferrer"
+                        >
+                          <i className="fab fa-pinterest" />
+                        </IconLink>
+                        <IconLink
+                          href={`https://wa.me/?text=${currenthref}`}
+                          target="_blank"
+                          rel="noreferrer"
+                        >
+                          <i className="fab fa-whatsapp" />
+                        </IconLink>
+                        <IconLink
+                          href={`mailto:?subject=${title}&amp;body=${currenthref}`}
+                          target="_blank"
+                          rel="noreferrer"
+                        >
+                          <i className="fas fa-envelope" />
+                        </IconLink>
+                      </div>
                     </div>
                   </div>
                   <div className="post-page-box-1-2">
@@ -252,8 +225,7 @@ const SinglePostPage = (props) => {
                       {rLoading ? (
                         <Spinner />
                       ) : (
-                        randomarticle &&
-                        randomarticle.map((item, index) => {
+                        randomarticle()?.map((item, index) => {
                           return (
                             <div className="cardStyle" key={index}>
                               <CardStyle3 posts={item} />
@@ -274,8 +246,6 @@ const SinglePostPage = (props) => {
           </motion.div>
         </motion.main>
       </Suspense>
-
-      <Footer />
     </>
   );
 };

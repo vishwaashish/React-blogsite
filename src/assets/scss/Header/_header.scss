@@ -1,34 +1,28 @@
 // header
 @import "../variables";
 
-.home-navbar {
-  position: fixed;
-  background-color: var(--background-color);
-  width: 100%;
-  box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
-  z-index: 999;
-  transition: all 0.5s linear;
-}
-.home-navbar-expand {
-  position: absolute;
-  background-color: transparent;
-  width: 100%;
-  padding-top: 2rem;
-  transition: all 0.5s linear;
-}
-.navbar-fixed {
-  position: fixed;
-  z-index: 4;
-  width: 100%;
-  background-color: var(--background-color);
-  box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
-}
 .navbar-expand {
   padding: 1em 1em;
-  transition: 0.3s linear;
+
+  &.transparent {
+    padding-block: 2rem;
+    background-color: transparent;
+    box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0);
+    transition: all 0.2s ease-in-out;
+
+    a,
+    i {
+      color: white;
+    }
+  }
 }
 .navbar {
-  transition: 0.3s linear;
+  position: fixed;
+  z-index: 999;
+  box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+  width: 100%;
+  background-color: var(--background-color);
+  transition: all 0.5s ease-in-out;
 }
 
 header {
@@ -173,7 +167,7 @@ nav {
 @media only screen and (min-width: 680px) {
   .navbar-expand {
     padding: 1em 4em;
-    transition: 0.3s linear;
+    // transition: 0.3s linear;
   }
   header {
     padding: 0.5em 4em;
@@ -183,15 +177,15 @@ nav {
   }
 }
 @media only screen and (min-width: 920px) {
-  .home-navbar-expand {
-    color: white;
-    a {
-      color: white;
-    }
-  }
+  // .home-navbar-expand {
+  //   color: white;
+  //   a {
+  //     color: white;
+  //   }
+  // }
   .navbar-expand {
     padding: 0.5em 8em;
-    transition: 0.3s linear;
+    // transition: 0.3s linear;
   }
   .menu {
     display: none;
