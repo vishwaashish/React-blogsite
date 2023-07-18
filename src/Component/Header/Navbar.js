@@ -1,10 +1,10 @@
 import React, { useCallback } from "react";
 import { NavLink } from "react-router-dom";
 import { HashLink } from "react-router-hash-link";
-import ModalSearch from "../Modal/ModalSearch";
+import ModalSearch from "../modal/ModalSearch";
 import useHeader from "./useHeader";
 import { AnimatePresence } from "framer-motion";
-import { AnimateIcon } from "../AnimateClick";
+import { AnimateIcon } from "../animateClick";
 
 const Navbar = () => {
   const {

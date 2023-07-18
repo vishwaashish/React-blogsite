@@ -1,8 +1,8 @@
 import React from "react";
 import { useQuery } from "react-query";
-import { Callgetapi } from "../Api/CallApi";
-import Hero2 from "../Component/Hero2/Hero2";
-import SocialShare from "../Component/Social share/SocialShare";
+import { Callgetapi } from "../api/callApi";
+import Hero2 from "../component/hero2/Hero2";
+import SocialShare from "../component/socialShare";
 
 const Home = () => {
   const { data, error, isLoading } = useQuery("post", Callgetapi, {

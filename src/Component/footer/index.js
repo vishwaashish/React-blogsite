@@ -1,6 +1,6 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
-import { IconLink } from "../AnimateClick";
+import { IconLink } from "../animateClick";
 
 const Footer = () => {
   const ScrollUp = () => {

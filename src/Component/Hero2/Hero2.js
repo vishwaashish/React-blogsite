@@ -1,11 +1,12 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
-import CardStyle1 from "../CardStyle/CardStyle1";
-import CardStyle2 from "../CardStyle/CardStyle2";
-import CardStyle3 from "../CardStyle/CardStyle3";
-import HeroSection from "../Hero/HeroSection";
-import { randompost, uniquepost } from "../Postcount/PostLogic";
+import CardStyle1 from "../cardStyle/CardStyle1";
+import CardStyle2 from "../cardStyle/CardStyle2";
+import CardStyle3 from "../cardStyle/CardStyle3";
+import HeroSection from "../hero/HeroSection";
+import { randompost, uniquepost } from "../postCount/postLogic";
 import Hero1 from "./Hero1";
+import Loader from "../loader/Loader";
 const Hero2 = (props) => {
   const scroll1 = React.useRef(null);
   const { data, error, isLoading } = props.posts;
@@ -14,31 +15,10 @@ const Hero2 = (props) => {
   const randomarticle3 = randompost(data, 4);
   const randomarticle4 = randompost(data, 3);
 
-  const Spinner = () => (
-    <div
-      style={{
-        display: "flex",
-        height: "100vh",
-        justifyContent: "center",
-        alignItems: "center",
-      }}
-    >
-      <svg className="spinner" viewBox="0 0 50 50">
-        <circle
-          className="path"
-          cx="25"
-          cy="25"
-          r="20"
-          fill="none"
-          strokeWidth="5"
-        ></circle>
-      </svg>
-    </div>
-  );
   return (
     <>
       {isLoading ? (
-        <Spinner />
+        <Loader h="100vh" />
       ) : (
         <>
           <Hero1

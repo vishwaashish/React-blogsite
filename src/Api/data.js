@@ -10,6 +10,7 @@ import Image9 from "../assets/image/9.jpg"
 import Image10 from "../assets/image/10.jpg"
 import Image11 from "../assets/image/11.jpg"
 import Image12 from "../assets/image/12.jpg"
+
 export const jsondata = [
     {
         id: 1,

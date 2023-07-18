@@ -1,10 +1,10 @@
 import { AnimatePresence, motion } from "framer-motion";
 import React from "react";
 import { useQuery } from "react-query";
-import { Callgetapi } from "../../Api/CallApi";
-import CardStyle4Blog from "../../Component/CardStyle/CardStyle4Blog";
-import Loader from "../../Component/Loader/Loader";
-import SocialShare from "../../Component/Social share/SocialShare";
+import { Callgetapi } from "../../api/callApi";
+import CardStyle4Blog from "../../component/cardStyle/CardStyle4Blog";
+import Loader from "../../component/loader/Loader";
+import SocialShare from "../../component/socialShare";
 
 const Blog = () => {
   const { data, isLoading } = useQuery(["post"], Callgetapi, {
@@ -19,15 +19,7 @@ const Blog = () => {
 
   return (
     <>
-      {/* <Navbar /> */}
-      <SocialShare
-        shareparam={{
-          title: "",
-          description: "",
-          image_lg: "",
-          image: "",
-        }}
-      />
+      <SocialShare />
       <motion.main
         initial={{
           opacity: 0,

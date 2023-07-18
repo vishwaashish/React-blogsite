@@ -1,23 +1,18 @@
 import "@fortawesome/fontawesome-free/css/all.min.css";
-import { AnimatePresence } from "framer-motion";
 import React, { Suspense } from "react";
-import { useLocation, useRoutes } from "react-router-dom";
-import AnimatePage from "./Component/AnimatePage";
-import Footer from "./Component/Footer/Footer";
-import Navbar from "./Component/Header/Navbar";
-import Loader from "./Component/Loader/Loader";
-import Scrolltoup from "./Component/Scrolltoup/Scrolltoup";
+import { useRoutes } from "react-router-dom";
+import Navbar from "./component/header/Navbar";
+import Loader from "./component/loader/Loader";
+import ScrollToTop from "./component/scrollToTop";
 import "./assets/scss/style.css";
-// import Home from "./pages/Home";
-// import Blog from "./pages/Post/Blog";
-// import SinglePostPage from "./pages/Post/SinglePostPage";
+import AnimatePage from "./component/animatePage";
+import Footer from "./component/footer";
 
-const Blog = React.lazy(() => import("./pages/Post/Blog"));
+const Blog = React.lazy(() => import("./pages/post/Blog"));
 const Home = React.lazy(() => import("./pages/Home"));
-const SinglePostPage = React.lazy(() => import("./pages/Post/SinglePostPage"));
+const SinglePostPage = React.lazy(() => import("./pages/post/SinglePostPage"));
 
 function App() {
-  const location = useLocation();
   const elements = useRoutes([
     {
       path: "/",
@@ -38,22 +33,10 @@ function App() {
   ]);
   return (
     <Suspense fallback={<Loader h="100vh" />}>
-      <Scrolltoup />
+      <ScrollToTop />
       <Navbar />
-      <AnimatePresence mode="wait" initial={false}>
-        {React.cloneElement(elements, { key: location.pathname })}
-
-        {/* <Routes key={location.pathname} location={location}>
-          <Route path="/" element={<AnimatePage children={<Home />} />} />
-          <Route path="/blog" element={<AnimatePage children={<Blog />} />} />
-          <Route
-            path="/post/:id"
-            element={<AnimatePage children={<SinglePostPage />} />}
-          />
-          <Route path="*" element={<AnimatePage children={<Home />} />} />
-        </Routes> */}
-        <Footer />
-      </AnimatePresence>
+      {elements}
+      <Footer />
     </Suspense>
   );
 }

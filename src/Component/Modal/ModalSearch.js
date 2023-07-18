@@ -2,17 +2,19 @@ import { motion } from "framer-motion";
 import React, { useRef } from "react";
 import { useQuery } from "react-query";
 import { NavLink } from "react-router-dom";
-import { Callgetapi } from "../../Api/CallApi";
-import { AnimateIcon } from "../AnimateClick";
+import { Callgetapi } from "../../api/callApi";
+import { AnimateIcon } from "../animateClick";
 const ModalSearch = (props) => {
   const { toggle } = props;
   const { data } = useQuery("post", Callgetapi);
   const inputref = useRef(null);
   const [values, setValues] = React.useState("");
   const [apidata, setApiData] = React.useState([]);
+
   const ToggleClose = () => {
     toggle((isOpen) => !isOpen);
   };
+  
   React.useEffect(() => {
     inputref.current.focus();
   }, []);
