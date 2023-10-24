@@ -1,6 +1,6 @@
 import React from "react";
 import { useQuery } from "react-query";
-import { Callgetapi } from "../api/callApi";
+import { Callgetapi } from "../common/services";
 import Hero2 from "../component/hero2/Hero2";
 import SocialShare from "../component/socialShare";
 

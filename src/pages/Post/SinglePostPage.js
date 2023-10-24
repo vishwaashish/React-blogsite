@@ -4,13 +4,13 @@ import React, { Suspense, useCallback } from "react";
 import { Helmet } from "react-helmet";
 import { useQuery } from "react-query";
 import { NavLink, useParams } from "react-router-dom";
-import { Callgetapi, Callgetapibyid } from "../../api/callApi";
-import { jsondata } from "../../api/data";
+import { Callgetapi, Callgetapibyid } from "../../common/services";
+import { jsondata } from "../../common/data";
 import { IconLink } from "../../component/animateClick";
 import CardStyle3 from "../../component/cardStyle/CardStyle3";
-import Loader from "../../component/loader/Loader";
-import Spinner from "../../component/loader/Spinner";
-import { randompost } from "../../component/postCount/postLogic";
+import Loader from "../../component/Loader/Loader";
+import Spinner from "../../component/Loader/Spinner";
+import { randompost } from "../../component/postcount/postLogic";
 import SocialShare from "../../component/socialShare";
 
 const postPageBoxVariants = {

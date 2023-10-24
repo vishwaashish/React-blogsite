@@ -4,9 +4,9 @@ import CardStyle1 from "../cardStyle/CardStyle1";
 import CardStyle2 from "../cardStyle/CardStyle2";
 import CardStyle3 from "../cardStyle/CardStyle3";
 import HeroSection from "../hero/HeroSection";
-import { randompost, uniquepost } from "../postCount/postLogic";
+import { randompost, uniquepost } from "../postcount/postLogic";
 import Hero1 from "./Hero1";
-import Loader from "../loader/Loader";
+import Loader from "../Loader/Loader";
 const Hero2 = (props) => {
   const scroll1 = React.useRef(null);
   const { data, error, isLoading } = props.posts;

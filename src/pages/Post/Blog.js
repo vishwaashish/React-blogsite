@@ -1,9 +1,9 @@
 import { AnimatePresence, motion } from "framer-motion";
 import React from "react";
 import { useQuery } from "react-query";
-import { Callgetapi } from "../../api/callApi";
+import { Callgetapi } from "../../common/services";
 import CardStyle4Blog from "../../component/cardStyle/CardStyle4Blog";
-import Loader from "../../component/loader/Loader";
+import Loader from "../../component/Loader/Loader";
 import SocialShare from "../../component/socialShare";
 
 const Blog = () => {

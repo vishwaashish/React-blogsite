@@ -1,8 +1,8 @@
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import React, { Suspense } from "react";
 import { useRoutes } from "react-router-dom";
-import Navbar from "./component/header/Navbar";
-import Loader from "./component/loader/Loader";
+import Navbar from "./component/Header/Navbar";
+import Loader from "./component/Loader/Loader";
 import ScrollToTop from "./component/scrollToTop";
 import "./assets/scss/style.css";
 import AnimatePage from "./component/animatePage";
