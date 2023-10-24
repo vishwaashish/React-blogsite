@@ -16,7 +16,7 @@ function App() {
   const elements = useRoutes([
     {
       path: "/",
-      element: <AnimatePage children={<Home />} />,
+      element: <Home />,
     },
     {
       path: "/blog",
@@ -31,14 +31,7 @@ function App() {
       element: <AnimatePage children={<Home />} />,
     },
   ]);
-  return (
-    <Suspense fallback={<Loader h="100vh" />}>
-      <ScrollToTop />
-      <Navbar />
-      {elements}
-      <Footer />
-    </Suspense>
-  );
+  return <Suspense fallback={<Loader h="100vh" />}>{elements}</Suspense>;
 }
 
 export default App;

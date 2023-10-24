@@ -1,10 +1,15 @@
 import React from "react";
-import { NavLink } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const Hero1 = (props) => {
   const parallax = React.useRef();
+  const navigate = useNavigate();
   const { randomarticle1, data } = props;
   const id = (!!randomarticle1 && randomarticle1?.id) ?? data?.id;
+
+  const onPoint = (id) => () => {
+    navigate("/post/" + id);
+  };
 
   return (
     <>
@@ -27,11 +32,9 @@ const Hero1 = (props) => {
             }}
           ></div>
           {id && (
-            <NavLink to={"/post/" + id}>
-              <button>
-                <i className="fa fa-hand-pointer" />
-              </button>
-            </NavLink>
+            <button onClick={onPoint(id)} type="button" aria-label="Open">
+              <i className="fa fa-hand-pointer" />
+            </button>
           )}
         </div>
       </div>
